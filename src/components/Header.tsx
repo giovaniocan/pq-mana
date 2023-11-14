@@ -17,7 +17,7 @@ export function Header() {
             width={94} 
             alt="" 
         />
-        <span className={`${baloo700.className} text-xl`}>
+        <span className={`${baloo700.className} text-2xl`}>
             Pão de queijo
         </span>
       </Link>
