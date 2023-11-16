@@ -7,13 +7,14 @@ import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
 
 export function Intro() {
   return (
-    <div className="my-20 flex justify-between gap-32 mr-12">
+    <div className="flex justify-between items-center gap-32 ">
       <main>
-        <h1 className={`${baloo800.className} text-5xl text-base-title m-10`}>
-          Descubra o sabor autentico e irresistível do nosso pão de queijo
+        <h1 className={`${baloo800.className} text-5xl text-base-title my-10`}>
+          Descubra o sabor autentico e irresistível do nosso pão de queijo em
+          cada mordida
         </h1>
 
-        <div className="mx-10 grid grid-cols-2 gap-8 mt-3">
+        <div className="mr-10 grid grid-cols-2 gap-8">
           <div className="flex gap-3 items-center">
             <div className="bg-yellow-dark rounded-full justify-center items-center p-[6px]">
               <ShoppingCart size={20} weight="fill" color="#fff" />
