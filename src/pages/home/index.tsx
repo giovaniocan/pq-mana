@@ -4,11 +4,10 @@ import { ProductsList } from '@/components/home/ProductsList'
 
 export default function Home() {
   return (
-    <main className="bg-blue-200 lg:px-36 flex flex-col gap-16">
+    <main className="bg-blue-200 lg:px-36 flex flex-col gap-6 md:gap-16">
       <Header />
-      {/* 
       <Intro />
-      <ProductsList /> */}
+      {/* <ProductsList /> */}
     </main>
   )
 }

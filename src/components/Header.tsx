@@ -6,7 +6,7 @@ import { MapPin, ShoppingCart } from 'phosphor-react'
 
 export function Header() {
   return (
-    <main className="flex flex-col md:flex-row justify-between items-center py-4 md:py-9 px-4 md:px-16">
+    <main className="flex flex-col md:flex-row justify-between items-center pt-4 md:py-9 px-4 md:px-16">
       <Link href="/home" className="flex items-center gap-3 md:gap-6">
         <Image src={LogoImage} height={62} width={94} alt="" />
         <span className={`${baloo700.className} text-2xl`}>Pão de queijo</span>
