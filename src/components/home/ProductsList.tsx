@@ -7,7 +7,19 @@ export function ProductsList() {
       <h2 className={`${baloo800.className} text-4xl text-base-subtitle`}>
         Nossos produtos
       </h2>
-      <main className="flex ">
+      <main className="flex gap-20 flex-wrap  ">
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
+        <ProductCard />
         <ProductCard />
       </main>
     </div>

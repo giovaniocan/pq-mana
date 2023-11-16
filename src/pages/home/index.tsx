@@ -4,7 +4,7 @@ import { ProductsList } from '@/components/home/ProductsList'
 
 export default function Home() {
   return (
-    <main className="bg-background h-screen w-screen px-36 flex flex-col gap-16">
+    <main className="bg-background px-36 flex flex-col gap-16">
       <Header />
       <Intro />
       <ProductsList />

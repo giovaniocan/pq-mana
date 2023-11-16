@@ -9,13 +9,13 @@ export function ProductCard() {
   return (
     <div className="max-w-[16rem] bg-base-card flex flex-col  px-5 py-6  rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] ">
       <div className="flex flex-col items-center">
-        <div className="flex items-center justify-center">
+        <div className="relative  w-36 h-40">
           <Image
             src={image}
-            alt="imagem"
-            width={140}
-            height={156}
-            objectFit="contain"
+            alt="Pão de Queijo"
+            fill
+            quality={100}
+            className="object-cover rounded-lg"
           />
         </div>
         <div className="mt-3 flex justify-around">

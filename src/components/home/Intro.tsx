@@ -53,13 +53,15 @@ export function Intro() {
         </div>
       </main>
 
-      <Image
-        src={Photo}
-        alt="Pão de Queijo"
-        width={476}
-        height={360}
-        objectFit="contain"
-      />
+      <div className="relative  w-[50rem] h-[28rem]">
+        <Image
+          src={Photo}
+          alt="Pão de Queijo"
+          fill
+          quality={100}
+          className="object-cover rounded-lg"
+        />
+      </div>
     </div>
   )
 }
