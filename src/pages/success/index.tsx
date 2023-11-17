@@ -9,9 +9,9 @@ import { RenderDetail } from '@/components/success/RenderDetail'
 
 export default function Success() {
   return (
-    <main className="bg-background h-screen lg:px-36 flex flex-col gap-6 md:gap-16">
+    <main className="bg-background h-screen mx-4 lg:px-36 flex flex-col gap-6 md:gap-16">
       <Header />
-      <main className="mt-8 px-16">
+      <main className="mt-8 ">
         <div className="flex flex-col gap-2">
           <h1
             className={`${baloo800.className} text-3xl md:text-5xl text-yellow-dark`}

@@ -3,7 +3,7 @@ import { ProductCard } from './ProductCard'
 
 export function ProductsList() {
   return (
-    <div className="flex mx-6 pb-6 md:mx-4 flex-col gap-14">
+    <div className="flex  pb-6 md:mx-4 flex-col gap-14">
       <h2 className={`${baloo800.className} text-4xl text-base-subtitle`}>
         Nossos produtos
       </h2>

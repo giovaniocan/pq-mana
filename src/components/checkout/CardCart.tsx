@@ -1,16 +1,16 @@
 import Image from 'next/image'
 
 import image from '../../../public/testeimage.svg'
-import { Minus, Plus, Trash } from 'phosphor-react'
+import { Trash } from 'phosphor-react'
 import { PlusAndMinusButton } from '../PlusAndMinutsButton'
 
 export function CardCart() {
   return (
-    <div className="card-cart flex items-center justify-between pb-6 border-b border-base-button">
-      <div className="flex gap-5">
-        <div className="relative w-16 h-16">
-          <Image src={image} alt="Pão de Queijo" fill quality={100} />
-        </div>
+    <div className="flex gap-5 lg:flex-row items-center pb-6 border-b border-base-button">
+      <div className="relative w-20 h-20">
+        <Image src={image} alt="Pão de Queijo" fill quality={100} />
+      </div>
+      <div className="flex flex-col-reverse lg:flex-row w-full lg:items-center justify-between">
         <div>
           <h4 className="text-base-subtitle text-base">nome do produto</h4>
           <div className="flex gap-2">
@@ -21,8 +21,10 @@ export function CardCart() {
             </button>
           </div>
         </div>
+        <h3 className="text-base-text mb-1 lg:mb-0 font-bold text-base">
+          R$ 9,90
+        </h3>
       </div>
-      <h3 className="text-base-text font-bold text-base">R$ 9,90</h3>
     </div>
   )
 }
