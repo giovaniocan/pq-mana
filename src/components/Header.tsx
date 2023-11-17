@@ -12,7 +12,7 @@ export function Header() {
         <span className={`${baloo700.className} text-2xl`}>Pão de queijo</span>
       </Link>
 
-      <div className="flex gap-12 md:gap-3 items-center mt-4 md:mt-0">
+      <div className="flex gap-12 md:gap-3 items-center mt-8 md:mt-0">
         <div className="flex gap-1 items-center py-2 px-3 rounded-md bg-purple-light text-purple-dark">
           <MapPin size={22} weight="fill" />
           <span className="text-sm">Moreira Sales, PR</span>

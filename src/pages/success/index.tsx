@@ -5,6 +5,7 @@ import image from '../../../public/successSVG.svg'
 import Image from 'next/image'
 import { baloo800 } from '../../styles/fonts'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { RenderDetail } from '@/components/success/RenderDetail'
 
 export default function Success() {
   return (
@@ -22,58 +23,31 @@ export default function Success() {
           </h4>
         </div>
 
-        <div className="flex justify-between mt-6 gap-3 items-center ">
-          <div className="w-1/2 p-[2px] bg-gradient-to-br from-[#8047f8] to-[#dbac2c] border-2  rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] border-gradientee rounded-[6px 36px]">
-            <div className="bg-background  flex flex-col gap-12 pl-14 py-14 rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] rounded-[6px 36px]">
-              <div className="flex gap-4 items-center">
-                <div
-                  className={`bg-purple rounded-full justify-center items-center p-[6px]`}
-                >
-                  <MapPin size={20} weight="fill" color="#fff" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-base-text font-bold text-base">
-                    endereço detalhado
-                  </span>
-                  <span className="text-base-text font-normal text-base">
-                    Cidade
-                  </span>
-                </div>
-              </div>
-              <div className="flex gap-4 items-center">
-                <div
-                  className={`bg-yellow rounded-full justify-center items-center p-[6px]`}
-                >
-                  <Timer size={20} weight="fill" color="#fff" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-base-text text-base">
-                    Previsão de entrega
-                  </span>
-                  <span className="text-base-text font-bold  text-base">
-                    Rota pré programada
-                  </span>
-                </div>
-              </div>
-              <div className="flex gap-4 items-center">
-                <div
-                  className={`bg-yellow-dark rounded-full justify-center items-center p-[6px]`}
-                >
-                  <CurrencyDollar size={20} weight="fill" color="#fff" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-base-text font-normal text-base">
-                    Pagamento na entrega
-                  </span>
-                  <span className="text-base-text font-bold text-base">
-                    Cartão de Crédito
-                  </span>
-                </div>
-              </div>
+        <div className="flex flex-col md:flex-row justify-between mt-6 gap-3 items-center ">
+          <div className="w-full md:w-1/2 p-1 md:p-[2px]  bg-gradient-to-br from-[#8047f8] to-[#dbac2c]  border-2  rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] border-gradientee rounded-[6px 36px]">
+            <div className="bg-background bg flex flex-col gap-4 md:gap-12 p-4 md:pl-14 md:py-14 border-2  rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] border-gradientee rounded-[6px 36px]">
+              <RenderDetail
+                title="Entrega em Rua João Daniel Martinelli, 102"
+                subtitle="Porto Alegre, RS"
+                Icon={MapPin}
+                bgColor="purple"
+              />
+              <RenderDetail
+                Icon={Timer}
+                bgColor="yellow"
+                subtitle="Rota pré programada"
+                title="Previsão de entrega"
+              />
+              <RenderDetail
+                Icon={CurrencyDollar}
+                bgColor="yellow-dark"
+                subtitle="Pagamento na entrega"
+                title="Cartão de Crédito"
+              />
             </div>
           </div>
 
-          <div className="relative w-60 h-56 md:w-[35rem] md:h-[25rem]">
+          <div className="relative w-full h-56 md:w-[35rem] md:h-[25rem]">
             <Image
               src={image}
               alt="Pão de Queijo"
