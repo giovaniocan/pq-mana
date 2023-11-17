@@ -8,10 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderColor: {
+        gradientee: 'linear-gradient(180deg, #8047f8 0%, #dbac2c 100%)',
+      },
       colors: {
         'yellow-dark': '#C47F17',
         yellow: '#DBAC2C',
         'yellow-light': '#F1E9C9',
+
+        gradienti: 'linear-gradient(to right, #8047f8, #dbac2c)',
 
         'purple-dark': '#4B2995',
         purple: '#8047F8',
@@ -24,7 +29,7 @@ const config: Config = {
         'base-text': '#574F4D',
         'base-hover': '#D7D5D5',
         'base-button': '#E6E5E5',
-        'base-inpunt': '#EDEDED',
+        'base-input': '#EDEDED', // Corrigi o nome aqui para 'base-input'
 
         background: '#FAFAFA',
         white: '#FFFFFF',
@@ -33,4 +38,5 @@ const config: Config = {
   },
   plugins: [],
 }
+
 export default config
