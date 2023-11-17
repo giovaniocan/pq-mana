@@ -6,7 +6,7 @@ interface TagsProps {
 
 export function Tags({ children }: TagsProps) {
   return (
-    <div className="bg-yellow-light px-2 py-[2px] rounded-full">
+    <div className="bg-yellow-light mt-1 px-2 py-[2px] rounded-full">
       <span className="text-yellow-dark text-xs font-bold uppercase">
         {children}
       </span>
