@@ -4,6 +4,7 @@ import { Tags } from './Tags'
 
 import { baloo700 } from '../../styles/fonts'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { PlusAndMinusButton } from '../PlusAndMinutsButton'
 
 export function ProductCard() {
   return (
@@ -40,11 +41,7 @@ export function ProductCard() {
           <h3 className={`${baloo700.className} text-2xl`}>9,90</h3>
         </div>
         <div className="flex gap-2 md:gap-1 ">
-          <div className="flex gap-2 bg-base-button items-center py-2 px-3 rounded-lg">
-            <Minus color="#8047F8" size={22} />
-            <p className="text-base text-base-title">1</p>
-            <Plus color="#8047F8" size={22} />
-          </div>
+          <PlusAndMinusButton />
           <div className="bg-purple-dark p-2 rounded-lg">
             <ShoppingCart size={30} weight="fill" color="#fff" />
           </div>

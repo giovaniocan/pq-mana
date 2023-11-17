@@ -1,6 +1,6 @@
 export function FormAddress() {
   return (
-    <div>
+    <div className="w-3/5 ">
       <h1>Form Address</h1>
     </div>
   )
