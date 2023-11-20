@@ -3,7 +3,7 @@ import image from '../../../public/testeimage.svg'
 import { Tags } from './Tags'
 
 import { baloo700 } from '../../styles/fonts'
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
 import { PlusAndMinusButton } from '../PlusAndMinutsButton'
 
 export function ProductCard() {
