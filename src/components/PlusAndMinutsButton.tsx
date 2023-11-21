@@ -2,15 +2,18 @@ import { Minus, Plus } from 'phosphor-react'
 import { useState } from 'react'
 
 export function PlusAndMinusButton() {
-  const [counter, setCounter] = useState(1)
+  const [quantity, setQuantity] = useState(0)
 
   function handleIncrease() {
-    setCounter(counter + 1)
+    setQuantity((state) => state + 1)
   }
 
   function handleDecrease() {
-    if (counter === 1) return
-    setCounter(counter - 1)
+    if (quantity > 0) {
+      setQuantity((state) => state - 1)
+    } else {
+      alert('A quantidade não pode ser negativa')
+    }
   }
 
   return (
@@ -18,7 +21,7 @@ export function PlusAndMinusButton() {
       <button onClick={handleDecrease}>
         <Minus color="#8047F8" size={22} />
       </button>
-      <p className="text-base text-base-title">{counter}</p>
+      <p className="text-base text-base-title">{quantity}</p>
       <button onClick={handleIncrease}>
         <Plus color="#8047F8" size={22} />
       </button>
