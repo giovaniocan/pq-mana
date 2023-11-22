@@ -88,13 +88,11 @@ export function ProductCard({ product }: Props) {
               <Plus color="#8047F8" size={22} />
             </button>
           </div>
-          <div className="bg-purple-dark p-2 cursor-pointer rounded-lg">
-            <ShoppingCart
-              onClick={handleAddToCart}
-              size={30}
-              weight="fill"
-              color="#fff"
-            />
+          <div
+            onClick={handleAddToCart}
+            className="bg-purple-dark p-2 cursor-pointer rounded-lg"
+          >
+            <ShoppingCart size={30} weight="fill" color="#fff" />
           </div>
         </div>
       </div>
