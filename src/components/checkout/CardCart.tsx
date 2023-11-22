@@ -1,10 +1,38 @@
 import Image from 'next/image'
 
 import image from '../../../public/testeimage.svg'
-import { Trash } from 'phosphor-react'
-import { PlusAndMinusButton } from '../PlusAndMinutsButton'
+import { Minus, Plus, Trash } from 'phosphor-react'
+import { useState } from 'react'
 
-export function CardCart() {
+interface Product {
+  id: number
+  name: string
+  image: string
+  description: string
+  price: number
+  quantity: number
+}
+
+interface CardCartProps {
+  product: Product
+}
+
+export function CardCart({ product }: CardCartProps) {
+  const [quantity, setQuantity] = useState(product.quantity)
+
+  function handleIncrease() {
+    setQuantity((state) => state + 1)
+  }
+
+  function handleDecrease() {
+    if (quantity > 0) {
+      setQuantity((state) => state - 1)
+    } else {
+      alert('A quantidade não pode ser negativa')
+    }
+  }
+
+  const totalPrice = product.price * quantity
   return (
     <div className="flex gap-5 lg:flex-row items-center pb-6 border-b border-base-button">
       <div className="relative w-20 h-20">
@@ -12,9 +40,17 @@ export function CardCart() {
       </div>
       <div className="flex flex-col-reverse lg:flex-row w-full lg:items-center justify-between">
         <div>
-          <h4 className="text-base-subtitle text-base">nome do produto</h4>
+          <h4 className="text-base-subtitle text-base">{product.name}</h4>
           <div className="flex gap-2">
-            <PlusAndMinusButton />
+            <div className="flex gap-2 bg-base-button items-center py-2 px-3 rounded-lg">
+              <button onClick={handleDecrease}>
+                <Minus color="#8047F8" size={22} />
+              </button>
+              <p className="text-base text-base-title">{quantity}</p>
+              <button onClick={handleIncrease}>
+                <Plus color="#8047F8" size={22} />
+              </button>
+            </div>
             <button className="bg-base-button items-center rounded-lg flex gap-[0.25rem]  py-2 px-3">
               <Trash size={16} color="#8047F8" />
               <span className="text-xs text-base-text">REMOVER</span>
@@ -22,7 +58,7 @@ export function CardCart() {
           </div>
         </div>
         <h3 className="text-base-text mb-1 lg:mb-0 font-bold text-base">
-          R$ 9,90
+          R$ {totalPrice.toFixed(2)}
         </h3>
       </div>
     </div>
