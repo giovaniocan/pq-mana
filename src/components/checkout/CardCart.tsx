@@ -2,7 +2,10 @@ import Image from 'next/image'
 
 import image from '../../../public/testeimage.svg'
 import { Minus, Plus, Trash } from 'phosphor-react'
+
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { removeProductFromCart } from '@/redux/cart/slice'
 
 interface Product {
   id: number
@@ -20,15 +23,21 @@ interface CardCartProps {
 export function CardCart({ product }: CardCartProps) {
   const [quantity, setQuantity] = useState(product.quantity)
 
+  const dispatch = useDispatch()
+
+  function removeProduct() {
+    dispatch(removeProductFromCart(product.id))
+  }
+
   function handleIncrease() {
     setQuantity((state) => state + 1)
   }
 
   function handleDecrease() {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity((state) => state - 1)
     } else {
-      alert('A quantidade não pode ser negativa')
+      removeProduct()
     }
   }
 
@@ -51,7 +60,10 @@ export function CardCart({ product }: CardCartProps) {
                 <Plus color="#8047F8" size={22} />
               </button>
             </div>
-            <button className="bg-base-button items-center rounded-lg flex gap-[0.25rem]  py-2 px-3">
+            <button
+              onClick={removeProduct}
+              className="bg-base-button items-center rounded-lg flex gap-[0.25rem]  py-2 px-3"
+            >
               <Trash size={16} color="#8047F8" />
               <span className="text-xs text-base-text">REMOVER</span>
             </button>
