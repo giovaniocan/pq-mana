@@ -4,7 +4,12 @@ import LogoImage from '../../public/logo.svg'
 import Link from 'next/link'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 
+import { useSelector } from 'react-redux'
+import { selectNumberOfProductsInCart } from '@/redux/cart/cart.selector'
+
 export function Header() {
+  const numberOfPRoductsInCart = useSelector(selectNumberOfProductsInCart)
+
   return (
     <main className="flex flex-col md:flex-row justify-between items-center pt-4 md:py-9 ">
       <Link href="/home" className="flex items-center gap-3 md:gap-6">
@@ -24,7 +29,7 @@ export function Header() {
         >
           <ShoppingCart size={22} color="#C47F17" weight="fill" />
           <p className="absolute -mt-10 bg-yellow-dark rounded-full px-2 py-1 ml-5 text-white text-xs font-bold">
-            0
+            {numberOfPRoductsInCart}
           </p>
         </Link>
       </div>
