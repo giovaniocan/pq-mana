@@ -1,12 +1,15 @@
+import { useState } from 'react'
 import Image from 'next/image'
+import { useDispatch } from 'react-redux'
+
 import { Tags } from './Tags'
 
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 
 import { baloo700 } from '../../styles/fonts'
-import { useState } from 'react'
+import { addProductToCart } from '@/redux/cart/slice'
 
-interface Product {
+interface ProductProps {
   id: number
   name: string
   image: string
@@ -16,21 +19,17 @@ interface Product {
 }
 
 interface Props {
-  product: Product
+  product: ProductProps
 }
 
 export function ProductCard({ product }: Props) {
   const [quantity, setQuantity] = useState(0)
 
-  const { id, image, name, description, tags, price } = product
+  const dispatch = useDispatch()
 
   function handleAddToCart() {
-    if (quantity > 1) {
-      setQuantity(0)
-      console.log('producto adicionado no carrino')
-    } else {
-      console.log('selecione a quantidade antes de adiconar ao carrinho')
-    }
+    dispatch(addProductToCart({ ...product, quantity }))
+    setQuantity(0)
   }
 
   function handleIncrease() {
@@ -50,7 +49,7 @@ export function ProductCard({ product }: Props) {
       <div className="flex flex-col items-center">
         <div className="relative w-24 h-28 md:w-36 md:h-40">
           <Image
-            src={image}
+            src={product.image}
             alt="Pão de Queijo"
             fill
             quality={100}
@@ -58,17 +57,17 @@ export function ProductCard({ product }: Props) {
           />
         </div>
         <div className="hidden items-center mt-3 md:flex w-full flex-wrap justify-around">
-          {tags.map((tag) => {
+          {product.tags.map((tag) => {
             return <Tags key={tag}>{tag}</Tags>
           })}
         </div>
         <h2
           className={`${baloo700.className} text-center text-base-subtitle text-lg md:text-xl mt-4`}
         >
-          {name}
+          {product.name}
         </h2>
         <span className="text-xs md:text-sm mt-2 text-base-label text-center">
-          {description}
+          {product.description}
         </span>
       </div>
 
@@ -76,7 +75,7 @@ export function ProductCard({ product }: Props) {
         <div className="flex items-center gap-[2px]">
           <span className="text-sm">R$</span>
           <h3 className={`${baloo700.className} text-2xl`}>
-            {price.toFixed(2)}
+            {product.price.toFixed(2)}
           </h3>
         </div>
         <div className="flex gap-2 md:gap-1 ">
