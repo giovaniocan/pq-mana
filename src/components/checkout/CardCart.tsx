@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-import image from '../../../public/testeimage.svg'
 import { Minus, Plus, Trash } from 'phosphor-react'
 
 import { useState } from 'react'

@@ -1,7 +1,7 @@
 import { CardCart } from './CardCart'
 import { baloo700 } from '../../styles/fonts'
 
-import { useSelector } from 'react-redux/es/hooks/useSelector'
+import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/rootReducer'
 import { selectTotalPrice } from '@/redux/cart/cart.selector'
 
@@ -15,7 +15,7 @@ export function SummaryBill() {
         Produtos Selecionados
       </h1>
       <div className="flex  flex-col gap-6 p-10 bg-base-card rounded-tl-lg rounded-tr-3xl rounded-br-lg rounded-bl-3xl border-gradientee rounded-[6px 36px]">
-        {products.map((product) => {
+        {products?.map((product) => {
           return <CardCart key={product.id} product={product} />
         })}
         <div className="flex flex-col gap-6">

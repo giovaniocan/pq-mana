@@ -1,3 +1,4 @@
+// eslint-disable-next-line camelcase
 import { Baloo_2, Roboto } from 'next/font/google'
 
 export const roboto = Roboto({
