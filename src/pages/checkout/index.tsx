@@ -12,7 +12,7 @@ const CreateFormSchema = z.object({
   address: z.string().nonempty('o endereço é obrigatório'),
   city: z.string().nonempty('a cidade é obrigatória'),
   cep: z.string().refine((data) => /^\d{8}$/.test(data), {
-    message: 'O cep deve ter só números',
+    message: 'O cep deve ter só números e 8 caractéres',
   }),
   number: z.string().nonempty('o número é obrigatório'),
   paymentMethod: z.string().refine((data) => data !== undefined, {
@@ -20,14 +20,14 @@ const CreateFormSchema = z.object({
   }),
 })
 
-type CreateFormData = z.infer<typeof CreateFormSchema> // inferindo o tipo de cada informação contida no meu formulario
+type CreateFormData = z.infer<typeof CreateFormSchema>
 
 export default function Checkout() {
   const createAdressForm = useForm<CreateFormData>({
     resolver: zodResolver(CreateFormSchema),
   })
 
-  const { handleSubmit, watch, reset } = createAdressForm
+  const { handleSubmit, reset } = createAdressForm
 
   function handleSubmitForm(data: CreateFormData) {
     console.log(data)

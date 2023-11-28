@@ -53,15 +53,16 @@ export function CardCart({ product }: CardCartProps) {
           <h4 className="text-base-subtitle text-base">{product.name}</h4>
           <div className="flex gap-2">
             <div className="flex gap-2 bg-base-button items-center py-2 px-3 rounded-lg">
-              <button onClick={handleDecrease}>
+              <button type="button" onClick={handleDecrease}>
                 <Minus color="#8047F8" size={22} />
               </button>
               <p className="text-base text-base-title">{quantity}</p>
-              <button onClick={handleIncrease}>
+              <button type="button" onClick={handleIncrease}>
                 <Plus color="#8047F8" size={22} />
               </button>
             </div>
             <button
+              type="button"
               onClick={removeProduct}
               className="bg-base-button items-center rounded-lg flex gap-[0.25rem]  py-2 px-3"
             >
