@@ -1,7 +1,15 @@
 import { CurrencyDollarSimple, Bank, CreditCard, Money } from 'phosphor-react'
 import { PaymentOption } from './PaymentOptions'
+import { ErrorMessage } from './form/ErrorsMessage'
+import { ErrorPaymenthMethoidError } from './form/ErrorPaymenthMethoidError'
+
+import { useFormContext } from 'react-hook-form'
 
 export function PaymentMethod() {
+  const {
+    formState: { errors },
+  } = useFormContext()
+
   return (
     <div className="flex mt-5 flex-col p-10 gap-3 bg-base-card rounded-lg">
       <div className="flex gap-2">
@@ -15,7 +23,7 @@ export function PaymentMethod() {
       </div>
       <div className="flex flex-col lg:flex-row gap-3 mt-8">
         <PaymentOption
-          id="credit"
+          id="cartão de crédito"
           label="Cartão de Crédito"
           icon={<CreditCard size={20} color="#8047F8" />}
         />
@@ -25,11 +33,12 @@ export function PaymentMethod() {
           icon={<Bank size={20} color="#8047F8" />}
         />
         <PaymentOption
-          id="money"
+          id="dinheiro"
           label="Dinheiro"
           icon={<Money size={20} color="#8047F8" />}
         />
       </div>
+      {errors.paymentMethod && <ErrorPaymenthMethoidError />}
     </div>
   )
 }

@@ -11,15 +11,13 @@ const CreateFormSchema = z.object({
   name: z.string().nonempty('o nome da empresa é obrigatório'),
   address: z.string().nonempty('o endereço é obrigatório'),
   city: z.string().nonempty('a cidade é obrigatória'),
-  cep: z.string().refine((data) => data.length === 8, {
-    message: 'O cep deve ter só numeros',
+  cep: z.string().refine((data) => /^\d{8}$/.test(data), {
+    message: 'O cep deve ter só números',
   }),
   number: z.string().nonempty('o número é obrigatório'),
-  paymentMethod: z
-    .enum(['credit', 'pix', 'money'])
-    .refine((data) => data !== undefined, {
-      message: 'Selecione um método de pagamento',
-    }),
+  paymentMethod: z.string().refine((data) => data !== undefined, {
+    message: 'Selecione um método de pagamento',
+  }),
 })
 
 type CreateFormData = z.infer<typeof CreateFormSchema> // inferindo o tipo de cada informação contida no meu formulario
