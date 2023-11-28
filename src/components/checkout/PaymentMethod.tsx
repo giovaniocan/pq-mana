@@ -1,4 +1,4 @@
-import { Bank, CreditCard, CurrencyDollarSimple, Money } from 'phosphor-react'
+import { CurrencyDollarSimple, Bank, CreditCard, Money } from 'phosphor-react'
 import { PaymentOption } from './PaymentOptions'
 
 export function PaymentMethod() {

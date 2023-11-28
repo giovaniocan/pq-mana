@@ -5,10 +5,17 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/rootReducer'
 import { selectTotalPrice } from '@/redux/cart/cart.selector'
 
+import { useFormContext } from 'react-hook-form'
+
 export function SummaryBill() {
+  const {
+    formState: { isSubmitting },
+  } = useFormContext()
+
   const { products } = useSelector((state: RootState) => state.cartReducer)
 
   const totalPriceInCart = useSelector(selectTotalPrice)
+
   return (
     <div className="flex flex-col gap-4 w-full lg:w-2/5">
       <h1 className={`${baloo700.className} text-base-subtitle text-lg`}>
@@ -23,7 +30,12 @@ export function SummaryBill() {
             <p>Total</p>
             <p>R$ {totalPriceInCart.toFixed(2)}</p>
           </div>
-          <button className="uppercase w-full px-3 py-3 bg-yellow rounded">
+          <button
+            disabled={isSubmitting}
+            type="submit"
+            form="form"
+            className="uppercase w-full px-3 py-3 bg-yellow rounded"
+          >
             confirmar pedido
           </button>
         </div>
