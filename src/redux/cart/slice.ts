@@ -70,7 +70,7 @@ const cartSlice = createSlice({
       }
     },
 
-    cleanCart: (state, payload) => {
+    cleanCart: (state) => {
       state.products = []
     },
   },
