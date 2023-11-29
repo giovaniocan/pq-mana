@@ -7,13 +7,14 @@ import { store } from '../redux/store'
 
 import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
+import { Skeleton } from '@/components/Skeleton'
 
 export default function App({ Component, pageProps }: AppProps) {
   const persistor = persistStore(store)
   return (
     <main className={roboto.className}>
       <Provider store={store}>
-        <PersistGate loading={<div>carregando</div>} persistor={persistor}>
+        <PersistGate loading={<Skeleton />} persistor={persistor}>
           <Component {...pageProps} />
         </PersistGate>
       </Provider>

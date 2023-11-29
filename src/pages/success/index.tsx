@@ -13,8 +13,6 @@ export default function Success() {
   const router = useRouter()
   const { query } = router
 
-  console.log(query)
-
   return (
     <main className="bg-background h-screen mx-4 lg:px-36 flex flex-col gap-6 md:gap-16">
       <Header />

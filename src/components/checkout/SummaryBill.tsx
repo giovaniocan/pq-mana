@@ -15,8 +15,6 @@ export function SummaryBill() {
 
   const { products } = useSelector((state: RootState) => state.cartReducer)
 
-  console.log(products)
-
   const totalPriceInCart = useSelector(selectTotalPrice)
 
   return (

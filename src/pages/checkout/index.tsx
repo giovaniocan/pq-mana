@@ -52,13 +52,13 @@ export default function Checkout() {
   async function handleSubmitForm(data: CreateFormData) {
     await console.log(data, filteredArray, totalPriceInCart)
 
-    dispatch(cleanCart())
-    reset()
-
-    router.push({
+    await router.push({
       pathname: '/success',
       query: data,
     })
+
+    dispatch(cleanCart())
+    reset()
   }
 
   return (
