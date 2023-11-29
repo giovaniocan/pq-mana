@@ -8,10 +8,17 @@ import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { RenderDetail } from '@/components/success/RenderDetail'
 
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 export default function Success() {
   const router = useRouter()
   const { query } = router
+
+  useEffect(() => {
+    if (!query.name) {
+      router.replace('/checkout')
+    }
+  }, [query, router])
 
   return (
     <main className="bg-background h-screen mx-4 lg:px-36 flex flex-col gap-6 md:gap-16">
