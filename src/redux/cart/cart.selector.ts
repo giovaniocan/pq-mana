@@ -12,9 +12,8 @@ export const selectNumberOfProductsInCart = createSelector(
 
 export const selectTotalPrice = createSelector([cartSelector], (products) =>
   products
-    ? products.reduce(
-        (acc, product) => acc + product.price * product.quantity,
-        0,
-      )
+    ? products
+        .reduce((acc, product) => acc + product.price * product.quantity, 0)
+        .toFixed(2)
     : 0,
 )
