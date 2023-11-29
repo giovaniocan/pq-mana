@@ -12,6 +12,9 @@ import { cleanCart } from '@/redux/cart/slice'
 import { useRouter } from 'next/router'
 import { selectTotalPrice } from '@/redux/cart/cart.selector'
 import { RootState } from '@/redux/rootReducer'
+import { ArrowUUpLeft } from 'phosphor-react'
+
+import Link from 'next/link'
 
 const CreateFormSchema = z.object({
   name: z.string().nonempty('o nome da empresa é obrigatório'),
@@ -62,9 +65,18 @@ export default function Checkout() {
   }
 
   return (
-    <div className="bg-background h-screen mx-4 lg:px-36 flex flex-col gap-6 md:gap-16">
+    <div className="bg-background h-screen mx-4 lg:px-36 flex flex-col ">
       <Header />
-      <main>
+
+      <Link
+        href="/"
+        className="flex gap-2 items-center p-2 rounded-md relative"
+      >
+        <ArrowUUpLeft size={40} weight="fill" />
+        <p className="text-xl font-medium">Voltar</p>
+      </Link>
+
+      <main className="mt-6 ">
         <FormProvider {...createAdressForm}>
           <form
             id="form"
