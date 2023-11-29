@@ -15,6 +15,7 @@ import { RootState } from '@/redux/rootReducer'
 
 const CreateFormSchema = z.object({
   name: z.string().nonempty('o nome da empresa é obrigatório'),
+  phone: z.string().nonempty('o telefone é obrigatório'),
   address: z.string().nonempty('o endereço é obrigatório'),
   city: z.string().nonempty('a cidade é obrigatória'),
   cep: z.string().refine((data) => /^\d{8}$/.test(data), {
@@ -34,6 +35,12 @@ export default function Checkout() {
 
   const { products } = useSelector((state: RootState) => state.cartReducer)
 
+  const filteredArray = products.map((product) => ({
+    name: product.name,
+    price: product.price,
+    quantity: product.quantity,
+  }))
+
   const totalPriceInCart = useSelector(selectTotalPrice)
 
   const createAdressForm = useForm<CreateFormData>({
@@ -43,11 +50,15 @@ export default function Checkout() {
   const { handleSubmit, reset } = createAdressForm
 
   async function handleSubmitForm(data: CreateFormData) {
-    await console.log(data, products, totalPriceInCart)
+    await console.log(data, filteredArray, totalPriceInCart)
 
     dispatch(cleanCart())
     reset()
-    router.push('/success')
+
+    router.push({
+      pathname: '/success',
+      query: data,
+    })
   }
 
   return (

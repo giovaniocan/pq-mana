@@ -7,7 +7,14 @@ import { baloo800 } from '../../styles/fonts'
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
 import { RenderDetail } from '@/components/success/RenderDetail'
 
+import { useRouter } from 'next/router'
+
 export default function Success() {
+  const router = useRouter()
+  const { query } = router
+
+  console.log(query)
+
   return (
     <main className="bg-background h-screen mx-4 lg:px-36 flex flex-col gap-6 md:gap-16">
       <Header />
@@ -27,22 +34,26 @@ export default function Success() {
           <div className="w-full md:w-1/2 p-1 md:p-[2px]  bg-gradient-to-br from-[#8047f8] to-[#dbac2c]  border-2  rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] border-gradientee rounded-[6px 36px]">
             <div className="bg-background bg flex flex-col gap-4 md:gap-12 p-4 md:pl-14 md:py-14 border-2  rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] border-gradientee rounded-[6px 36px]">
               <RenderDetail
-                title="Entrega em Rua João Daniel Martinelli, 102"
-                subtitle="Porto Alegre, RS"
+                title={`Entrega para ${query.name}, ${query.number}`}
+                subtitle={`${query.city}, PR`}
                 Icon={MapPin}
                 bgColor="purple"
               />
               <RenderDetail
                 Icon={Timer}
                 bgColor="yellow"
-                subtitle="Rota pré programada"
+                subtitle="Rota pré programada ( entraremos em contato confirmando )"
                 title="Previsão de entrega"
               />
               <RenderDetail
                 Icon={CurrencyDollar}
                 bgColor="yellow-dark"
                 subtitle="Pagamento na entrega"
-                title="Cartão de Crédito"
+                title={
+                  query.paymentMethod
+                    ? String(query.paymentMethod)
+                    : 'Acerto na entrega'
+                }
               />
             </div>
           </div>

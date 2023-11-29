@@ -9,11 +9,20 @@ export function AddressForm() {
       <div className="flex flex-col gap-1 ">
         <input
           type="text"
-          placeholder="Nome da empresa"
+          placeholder="Nome da empresa ou do proprietário"
           className="flex p-3 w-full sm:w-1/2 bg-base-input text-base-label"
           {...register('name')}
         />
         <ErrorMessage field="name" />
+      </div>
+      <div className="flex flex-col gap-1 ">
+        <input
+          type="text"
+          placeholder="Telefone para contato"
+          className="flex p-3 w-full sm:w-1/2 bg-base-input text-base-label"
+          {...register('phone')}
+        />
+        <ErrorMessage field="phone" />
       </div>
 
       <div className="flex flex-col gap-1">
