@@ -1,0 +1,37 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Pão de Queijo de Pote 1 Kg",
+        "image": "/public/products/pote1Kg.svg",
+        "tags": ["1 e 2Kg", "delicioso"],
+        "description": "Delicie-se com nosso pão de queijo de pote de 1kg. Sabor irresistível e praticidade em uma única opção.",
+        "price": 9.9
+      },
+      {
+        "id": 2,
+        "name": "Pão de Queijo de Balde 4 Kg",
+        "image": "/public/products/balde4Kg.svg",
+        "tags": ["1 e 2Kg", "delicioso"],
+        "description": "Praticidade do nosso pão de queijo de pote de 4kg. Sabor excepcional em uma opção em abundância.",
+        "price": 9.9
+      },
+      {
+        "id": 3,
+        "name": "Pão de queijo congelado - 25g",
+        "image": "/public/products/pqCongelado25.svg",
+        "tags": ["1 e 2Kg", "delicioso"],
+        "description": " Sabor irresistível para lanches rápidos e deliciosos.",
+        "price": 9.9
+      },
+      {
+        "id": 4,
+        "name": "Pão de queijo congelado - 50g",
+        "image": "/public/products/pqCongelado50.svg",
+        "tags": ["1 e 2Kg", "delicioso"],
+        "description": "Sabor autêntico para qualquer momento do dia.",
+        "price": 9.9
+      }
+    ]
+  }
+  
