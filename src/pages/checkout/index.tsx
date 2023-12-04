@@ -15,6 +15,7 @@ import { RootState } from '@/redux/rootReducer'
 import { ArrowUUpLeft } from 'phosphor-react'
 
 import Link from 'next/link'
+import { sendEmail } from '@/utils/SendEmailFunction'
 
 const CreateFormSchema = z.object({
   name: z.string().nonempty('o nome da empresa é obrigatório'),
@@ -39,10 +40,15 @@ export default function Checkout() {
   const { products } = useSelector((state: RootState) => state.cartReducer)
 
   const filteredArray = products.map((product) => ({
-    name: product.name,
-    price: product.price,
-    quantity: product.quantity,
+    produto: product.name,
+    quantidade: product.quantity,
   }))
+
+  const formattedProducts = filteredArray
+    .map((product) => {
+      return `${product.produto}  ---  Quantidade: ${product.quantidade}`
+    })
+    .join('\n')
 
   const totalPriceInCart = useSelector(selectTotalPrice)
 
@@ -53,7 +59,19 @@ export default function Checkout() {
   const { handleSubmit, reset } = createAdressForm
 
   async function handleSubmitForm(data: CreateFormData) {
-    await console.log(data, filteredArray, totalPriceInCart)
+    const templateParams = {
+      name: data.name,
+      number_phone: data.phone,
+      rua: data.address,
+      number: data.number,
+      city: data.city,
+      cep: data.cep,
+      payment_method: data.paymentMethod,
+      products: formattedProducts,
+      total_price: totalPriceInCart,
+    }
+
+    await sendEmail(templateParams)
 
     await router.push({
       pathname: '/success',

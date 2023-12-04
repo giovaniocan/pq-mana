@@ -5,7 +5,7 @@ import { ProductsList } from '@/components/home/ProductsList'
 
 // tudo o que esta comentado quer dizer que é para quando tiver a api porém não esta pronta ainda kakakakakak
 
-/* interface HomeProps {
+export interface ProductListProps {
   products: {
     id: string
     name: string
@@ -14,7 +14,7 @@ import { ProductsList } from '@/components/home/ProductsList'
     description: string
     price: number
   }[]
-} */
+}
 
 export default function Home(/* { products }: HomeProps */) {
   return (
