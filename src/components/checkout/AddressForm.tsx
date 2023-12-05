@@ -10,7 +10,7 @@ export function AddressForm() {
         <input
           type="text"
           placeholder="Nome da empresa ou do proprietário"
-          className="flex p-3 w-full sm:w-1/2 bg-base-input text-base-label"
+          className="flex p-3 w-full sm:w-1/2 bg-base-input text-base-label focus:outline-yellow-dark"
           {...register('name')}
         />
         <ErrorMessage field="name" />
@@ -19,7 +19,7 @@ export function AddressForm() {
         <input
           type="text"
           placeholder="Telefone para contato"
-          className="flex p-3 w-full sm:w-1/2 bg-base-input text-base-label"
+          className="flex p-3 w-full sm:w-1/2 bg-base-input text-base- focus:outline-yellow-dark"
           {...register('phone')}
         />
         <ErrorMessage field="phone" />
@@ -29,7 +29,7 @@ export function AddressForm() {
         <input
           type="text"
           placeholder="Endereço"
-          className="flex p-3 w-full bg-base-input text-base-label"
+          className="flex p-3 w-full bg-base-input text-base- focus:outline-yellow-dark"
           {...register('address')}
         />
         <ErrorMessage field="address" />
@@ -40,7 +40,7 @@ export function AddressForm() {
           <input
             type="text"
             placeholder="Cidade"
-            className="flex p-3 w-full bg-base-input text-base-label"
+            className="flex p-3 w-full bg-base-input text-base- focus:outline-yellow-dark"
             {...register('city')}
           />
           <ErrorMessage field="city" />
@@ -50,7 +50,7 @@ export function AddressForm() {
           <input
             type="text"
             placeholder="CEP"
-            className="flex p-3 w-full bg-base-input text-base-label"
+            className="flex p-3 w-full bg-base-input text-base- focus:outline-yellow-dark"
             {...register('cep')}
           />
           <ErrorMessage field="cep" />
@@ -60,7 +60,7 @@ export function AddressForm() {
           <input
             type="text"
             placeholder="Número"
-            className="flex p-3 w-full bg-base-input text-base-label"
+            className="flex p-3 w-full bg-base-input text-base- focus:outline-yellow-dark"
             {...register('number')}
           />
           <ErrorMessage field="number" />
