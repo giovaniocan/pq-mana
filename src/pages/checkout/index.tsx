@@ -102,7 +102,7 @@ export default function Checkout() {
 
       <Link
         href="/"
-        className="flex gap-2 items-center p-2 rounded-md relative"
+        className="hidden md:flex gap-2 items-center p-2 rounded-md relative"
       >
         <ArrowUUpLeft size={40} weight="fill" />
         <p className="text-xl font-medium">Voltar</p>
