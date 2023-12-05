@@ -16,6 +16,7 @@ import { ArrowUUpLeft } from 'phosphor-react'
 
 import Link from 'next/link'
 import { sendEmail } from '@/utils/SendEmailFunction'
+import { toast } from 'react-toastify'
 
 const CreateFormSchema = z.object({
   name: z.string().nonempty('o nome da empresa é obrigatório'),
@@ -71,15 +72,28 @@ export default function Checkout() {
       total_price: totalPriceInCart,
     }
 
-    await sendEmail(templateParams)
+    try {
+      await sendEmail(templateParams)
 
-    await router.push({
-      pathname: '/success',
-      query: data,
-    })
+      await router.push({
+        pathname: '/success',
+        query: data,
+      })
 
-    dispatch(cleanCart())
-    reset()
+      dispatch(cleanCart())
+      reset()
+    } catch (error) {
+      toast.error('Erro ao finalizar compra! Tente novamente mais tarde', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      })
+    }
   }
 
   return (
