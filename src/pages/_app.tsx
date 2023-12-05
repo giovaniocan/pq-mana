@@ -9,7 +9,7 @@ import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Skeleton } from '@/components/Skeleton'
 
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 export default function App({ Component, pageProps }: AppProps) {

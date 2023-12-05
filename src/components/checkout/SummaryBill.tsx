@@ -37,7 +37,7 @@ export function SummaryBill() {
                 disabled={isSubmitting}
                 type="submit"
                 form="form"
-                className="uppercase w-full px-3 py-3 bg-yellow rounded"
+                className="uppercase w-full px-3 py-3 bg-yellow rounded hover:bg-yellow-dark/75"
               >
                 confirmar pedido
               </button>
