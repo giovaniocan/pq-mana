@@ -45,7 +45,7 @@ export function CardCart({ product }: CardCartProps) {
 
   const totalPrice = product.price * quantity
   return (
-    <div className="flex gap-5 lg:flex-row items-center pb-6 border-b border-base-button">
+    <div className="flex gap-5 mt-5 lg:flex-row items-center pb-6 border-b border-base-button">
       <div className="relative w-20 h-20">
         <Image src={product.image} alt="Pão de Queijo" fill quality={100} />
       </div>

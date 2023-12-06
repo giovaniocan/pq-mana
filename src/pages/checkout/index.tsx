@@ -17,6 +17,7 @@ import { ArrowUUpLeft } from 'phosphor-react'
 import Link from 'next/link'
 import { sendEmail } from '@/utils/SendEmailFunction'
 import { toast } from 'react-toastify'
+import { EmptyCart } from '@/components/checkout/EmptyCart'
 
 const CreateFormSchema = z.object({
   name: z.string().nonempty('o nome da empresa é obrigatório'),
@@ -73,7 +74,7 @@ export default function Checkout() {
     }
 
     try {
-      await sendEmail(templateParams)
+      sendEmail(templateParams)
 
       await router.push({
         pathname: '/success',
@@ -97,29 +98,39 @@ export default function Checkout() {
   }
 
   return (
-    <div className="bg-background h-screen lg:px-36 flex flex-col ">
-      <Header />
+    <div
+      className={`${
+        products.length > 0 ? `h-full bg-background` : `h-screen bg-background`
+      }`}
+    >
+      <div className=" lg:px-36 flex flex-col ">
+        <Header />
 
-      <Link
-        href="/"
-        className="hidden w-48 md:flex gap-2 mt-2 items-center p-2 rounded-md relative"
-      >
-        <ArrowUUpLeft size={40} weight="fill" />
-        <p className="text-xl font-medium">Voltar</p>
-      </Link>
+        <Link
+          href="/"
+          className="hidden w-48 md:flex gap-2 mt-2 items-center p-2 rounded-md relative"
+        >
+          <ArrowUUpLeft size={40} weight="fill" />
+          <p className="text-xl font-medium">Voltar</p>
+        </Link>
 
-      <main className=" mt-32  md:mt-6 px-4 md:px-0 ">
-        <FormProvider {...createAdressForm}>
-          <form
-            id="form"
-            onSubmit={handleSubmit(handleSubmitForm)}
-            className="flex  flex-col md:flex-row gap-8"
-          >
-            <FormAddress />
-            <SummaryBill />
-          </form>
-        </FormProvider>
-      </main>
+        <main className="mt-32 mb-8 md:mt-6 px-4 md:px-0 ">
+          {products.length > 0 ? (
+            <FormProvider {...createAdressForm}>
+              <form
+                id="form"
+                onSubmit={handleSubmit(handleSubmitForm)}
+                className="flex  flex-col md:flex-row gap-8"
+              >
+                <FormAddress />
+                <SummaryBill />
+              </form>
+            </FormProvider>
+          ) : (
+            <EmptyCart />
+          )}
+        </main>
+      </div>
     </div>
   )
 }

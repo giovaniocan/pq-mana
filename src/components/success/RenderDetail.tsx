@@ -16,8 +16,12 @@ export function RenderDetail({ Icon, title, bgColor, subtitle }: Props) {
         <Icon size={20} weight="fill" color="#fff" />
       </div>
       <div className="flex flex-col">
-        <span className="text-base-text font-bold text-base">{title}</span>
-        <span className="text-base-text font-normal text-base">{subtitle}</span>
+        <span className="text-base-text font-bold text-sm md:text-base">
+          {title}
+        </span>
+        <span className="text-base-text font-normal text-sm md:text-base">
+          {subtitle}
+        </span>
       </div>
     </div>
   )

@@ -16,7 +16,7 @@ export default function Success() {
 
   useEffect(() => {
     if (!query.name) {
-      router.replace('/checkout')
+      router.replace('/')
     }
   }, [query, router])
 
@@ -26,17 +26,18 @@ export default function Success() {
       <main className=" mt-32 md:mt-8 px-4 md:px-0 ">
         <div className="flex flex-col gap-2">
           <h1
-            className={`${baloo800.className} text-3xl md:text-5xl text-yellow-dark`}
+            className={`${baloo800.className} text-2xl md:text-5xl text-yellow-dark`}
           >
             Uhull! Pedido confirmado
           </h1>
-          <h4 className="text-xl text-base-subtitle">
-            Agora é só aguardar que logo o produto chegará até você
+          <h4 className="text-base lg:text-xl text-base-subtitle">
+            Agora é só aguardar que nossa equipe vai entrar em contato
+            confirmando o pedido
           </h4>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between mt-8 md:mt-6 gap-8 md:gap-3 items-center ">
-          <div className="w-full md:w-1/2 p-1 md:p-[2px]  bg-gradient-to-br from-[#8047f8] to-[#dbac2c]  border-2  rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] border-gradientee rounded-[6px 36px]">
+        <div className="flex mx-5 flex-col md:flex-row justify-between mt-10 md:mt-6 gap-12 md:gap-3 items-center ">
+          <div className="w-full md:w-1/2 p-[2px]  bg-gradient-to-br from-[#8047f8] to-[#dbac2c]  border-2  rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] border-gradientee rounded-[6px 36px]">
             <div className="bg-background bg flex flex-col gap-4 md:gap-12 p-4 md:pl-14 md:py-14 border-2  rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] border-gradientee rounded-[6px 36px]">
               <RenderDetail
                 title={`Entrega para ${query.name}, ${query.number}`}
@@ -63,7 +64,7 @@ export default function Success() {
             </div>
           </div>
 
-          <div className="relative w-full h-56 md:w-[35rem] md:h-[25rem]">
+          <div className="relative w-11/12 h-48 md:w-[35rem] md:h-[25rem]">
             <Image
               src={image}
               alt="Pão de Queijo"

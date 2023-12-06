@@ -6,7 +6,6 @@ import { RootState } from '@/redux/rootReducer'
 import { selectTotalPrice } from '@/redux/cart/cart.selector'
 
 import { useFormContext } from 'react-hook-form'
-import { EmptyCart } from './EmptyCart'
 
 export function SummaryBill() {
   const {
@@ -22,30 +21,26 @@ export function SummaryBill() {
       <h1 className={`${baloo700.className} text-base-subtitle text-lg`}>
         Produtos Selecionados
       </h1>
-      <div className="flex  flex-col gap-6 p-10 bg-base-card rounded-tl-lg rounded-tr-3xl rounded-br-lg rounded-bl-3xl border-gradientee rounded-[6px 36px]">
-        {products.length !== 0 ? (
-          <div>
-            {products?.map((product) => {
-              return <CardCart key={product.id} product={product} />
-            })}
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center justify-between text-xl text-base-subtitleh font-bold">
-                <p>Total</p>
-                <p>R$ {totalPriceInCart}</p>
-              </div>
-              <button
-                disabled={isSubmitting}
-                type="submit"
-                form="form"
-                className="uppercase w-full px-3 py-3 bg-yellow rounded hover:bg-yellow-dark/75"
-              >
-                confirmar pedido
-              </button>
+      <div className="flex  flex-col gap-6 px-10 pb-10 pt-5 bg-base-card rounded-tl-lg rounded-tr-3xl rounded-br-lg rounded-bl-3xl border-gradientee rounded-[6px 36px]">
+        <div>
+          {products?.map((product) => {
+            return <CardCart key={product.id} product={product} />
+          })}
+          <div className="flex flex-col gap-6 mt-5">
+            <div className="flex items-center justify-between text-xl text-base-subtitleh font-bold">
+              <p>Total</p>
+              <p>R$ {totalPriceInCart}</p>
             </div>
+            <button
+              disabled={isSubmitting}
+              type="submit"
+              form="form"
+              className="uppercase w-full px-3 py-3 bg-yellow rounded hover:bg-yellow-dark/75"
+            >
+              confirmar pedido
+            </button>
           </div>
-        ) : (
-          <EmptyCart />
-        )}
+        </div>
       </div>
     </div>
   )

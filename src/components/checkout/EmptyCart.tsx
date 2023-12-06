@@ -23,7 +23,7 @@ export function EmptyCart() {
 
       <button
         type="button"
-        className={`uppercase flex gap-4 items-center font-medium text-lg mt-8 justify-center w-full px-3 py-3 bg-yellow rounded hover:bg-yellow-dark/75`}
+        className={`uppercase w-full md:w-80 flex gap-4 items-center font-medium text-lg mt-8 justify-center px-3 py-3 bg-yellow rounded hover:bg-yellow-dark/75`}
         onClick={() => router.push('/')}
       >
         Continue comprando
