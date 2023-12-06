@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { error } from 'console'
 
 interface Product {
   id: number
@@ -23,6 +24,10 @@ const cartSlice = createSlice({
   reducers: {
     addProductToCart: (state, { payload }: PayloadAction<Product>) => {
       const product = payload
+
+      if (payload.quantity === 0) {
+        throw new Error('A quantidade não pode ser zero')
+      }
 
       const productIsAlreadyInCart = state.products.some(
         (prod) => prod.id === product.id,

@@ -27,7 +27,7 @@ export function ProductCard({ product }: Props) {
 
   const dispatch = useDispatch()
 
-  function handleAddToCart() {
+  async function handleAddToCart() {
     if (quantity <= 0) {
       return ToastyNotification({
         message: 'Selecione a quantidade antes de adicionar ao carrinho',
@@ -37,7 +37,7 @@ export function ProductCard({ product }: Props) {
     }
 
     try {
-      dispatch(addProductToCart({ ...product, quantity }))
+      await dispatch(addProductToCart({ ...product, quantity }))
       setQuantity(0)
 
       ToastyNotification({
@@ -46,7 +46,12 @@ export function ProductCard({ product }: Props) {
         whereInTheScreen: 'bottom-right',
       })
     } catch (error) {
-      console.log(error)
+      ToastyNotification({
+        message:
+          'Erro ao adicionar o produto ao carrinho. Tente novamente mais tarde.',
+        type: 'error',
+        whereInTheScreen: 'top-right',
+      })
     }
   }
 
