@@ -5,7 +5,7 @@ import { IntroParagraphs } from './IntroPraphes'
 
 export function Intro() {
   return (
-    <div className="flex mt-24 md:mt-0 flex-col px-4 lg:px-0 items-center md:flex-row justify-between gap-8 lg:gap-28 2xl:gap-32 ">
+    <div className="flex mt-24 md:mt-0 flex-col px-4 lg:px-0 items-center md:flex-row justify-between gap-8 py-4 md:py-0 lg:gap-28 2xl:gap-32 ">
       <main className="md:mr-10 ">
         <h1
           className={`${baloo800.className} text-xl xl:text-4xl 2xl:text-5xl text-base-title mb-6 md:mb-10`}
