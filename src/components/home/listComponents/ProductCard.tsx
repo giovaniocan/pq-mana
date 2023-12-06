@@ -6,7 +6,7 @@ import { ShoppingCart } from 'phosphor-react'
 
 import { baloo700 } from '../../../styles/fonts'
 import { addProductToCart } from '@/redux/cart/slice'
-import { PlusAndMinusButton } from '../../PlusAndMinutsButton'
+import { PlusAndMinusButton } from '../../PlusAndMinus/PlusAndMinutsButton'
 import { ToastyNotification } from '@/hooks/ToastyMessage'
 
 interface ProductProps {

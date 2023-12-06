@@ -1,4 +1,4 @@
-import { Header } from '@/components/Header'
+import { Header } from '@/components/header/Header'
 import { FormAddress } from '@/components/checkout/adressFormComponents/FormAddress'
 import { SummaryBill } from '@/components/checkout/summaryComponentes/SummaryBill'
 

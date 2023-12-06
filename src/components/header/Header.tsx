@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import { baloo700 } from '../styles/fonts'
-import LogoImage from '../../public/logo.svg'
+import { baloo700 } from '../../styles/fonts'
+import LogoImage from '../../../public/logo.svg'
 import Link from 'next/link'
 import { MapPin, ShoppingCart } from 'phosphor-react'
 

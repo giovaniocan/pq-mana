@@ -1,4 +1,4 @@
-import { Header } from '@/components/Header'
+import { Header } from '@/components/header/Header'
 import { Intro } from '@/components/home/introComponents/Intro'
 import { ProductsList } from '@/components/home/listComponents/ProductsList'
 

@@ -9,7 +9,7 @@ import {
   increaseProductQuantity,
   removeProductFromCart,
 } from '@/redux/cart/slice'
-import { PlusAndMinusButton } from '../../PlusAndMinutsButton'
+import { PlusAndMinusButton } from '../../PlusAndMinus/PlusAndMinutsButton'
 
 interface Product {
   id: number
