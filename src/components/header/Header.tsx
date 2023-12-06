@@ -28,6 +28,7 @@ export function Header() {
         <Link
           href="/checkout"
           className="bg-yellow-light p-2 rounded-md relative"
+          role="cartIcon"
         >
           <ShoppingCart size={22} color="#C47F17" weight="fill" />
           <p className="absolute -mt-10 bg-yellow-dark rounded-full px-2 py-1 ml-5 text-white text-xs font-bold">

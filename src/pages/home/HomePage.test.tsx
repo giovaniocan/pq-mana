@@ -3,17 +3,21 @@ import { Provider } from 'react-redux'
 import { store } from '@/redux/store'
 import Home from '@/pages/home'
 
-describe('Teste do Header', () => {
-  it('Deve renderizar o componente Header', () => {
+describe('Home component', () => {
+  it('Should render the Home Page and it is comonents', () => {
     render(
       <Provider store={store}>
         <Home />
       </Provider>,
     )
 
-    const textoEsperado = 'Pão de queijo'
-    const teste = screen.getByText(textoEsperado)
+    const cartIconHeader = screen.getByRole('cartIcon')
+    expect(cartIconHeader).toBeInTheDocument()
 
-    expect(teste).toBeInTheDocument()
+    const introText = screen.getByText(/nossos produtos/i)
+    expect(introText).toBeInTheDocument()
+
+    const productList = screen.getByText('Nossos produtos')
+    expect(productList).toBeInTheDocument()
   })
 })
