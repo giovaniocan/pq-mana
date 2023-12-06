@@ -1,4 +1,4 @@
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { Minus, Plus } from 'phosphor-react'
 
 interface PlusAndMinusProps {
   quantity: number

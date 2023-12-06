@@ -5,10 +5,10 @@ import { IntroParagraphs } from './IntroPraphes'
 
 export function Intro() {
   return (
-    <div className="flex flex-col items-center md:flex-row justify-between gap-8 md:gap-32 py-8 md:px-16">
-      <main className="md:mr-10">
+    <div className="flex mt-24 md:mt-0 flex-col px-4 lg:px-0 items-center md:flex-row justify-between gap-8 lg:gap-28 2xl:gap-32 py-8 ">
+      <main className="md:mr-10 ">
         <h1
-          className={`${baloo800.className} text-3xl md:text-5xl text-base-title mb-6 md:mb-10`}
+          className={`${baloo800.className} text-2xl xl:text-4xl 2xl:text-5xl text-base-title mb-6 md:mb-10`}
         >
           Descubra o sabor autêntico e irresistível do nosso pão de queijo em
           cada mordida
@@ -19,13 +19,13 @@ export function Intro() {
         </div>
       </main>
 
-      <div className="relative w-60 h-56 md:w-[50rem] md:h-[28rem]">
+      <div className="relative w-72 h-56 md:w-[30rem] md:h-64 lg:w-[45rem] lg:h-[20rem] xl:w-[60rem] xl:h-[28rem]">
         <Image
           src={Photo}
           alt="Pão de Queijo"
           fill
           quality={100}
-          className="object-cover rounded-lg"
+          className="rounded-lg"
         />
       </div>
     </div>

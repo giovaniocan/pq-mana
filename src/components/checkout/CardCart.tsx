@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { Minus, Plus, Trash } from 'phosphor-react'
+import { Trash } from 'phosphor-react'
 
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'

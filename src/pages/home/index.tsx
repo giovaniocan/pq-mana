@@ -18,7 +18,7 @@ export interface ProductListProps {
 
 export default function Home(/* { products }: HomeProps */) {
   return (
-    <main className="bg-background mx-4 pb-6 lg:px-36 flex flex-col gap-6 md:gap-16">
+    <main className="bg-background pb-6 lg:px-36 flex flex-col gap-6 md:gap-16">
       <Header />
       <Intro />
       <ProductsList />

@@ -97,18 +97,18 @@ export default function Checkout() {
   }
 
   return (
-    <div className="bg-background h-screen mx-4 lg:px-36 flex flex-col ">
+    <div className="bg-background h-screen lg:px-36 flex flex-col ">
       <Header />
 
       <Link
         href="/"
-        className="hidden md:flex gap-2 items-center p-2 rounded-md relative"
+        className="hidden w-48 md:flex gap-2 mt-2 items-center p-2 rounded-md relative"
       >
         <ArrowUUpLeft size={40} weight="fill" />
         <p className="text-xl font-medium">Voltar</p>
       </Link>
 
-      <main className=" mt-8 md:mt-6  ">
+      <main className=" mt-32  md:mt-6 px-4 md:px-0 ">
         <FormProvider {...createAdressForm}>
           <form
             id="form"

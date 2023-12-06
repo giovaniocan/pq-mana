@@ -12,7 +12,7 @@ export function FeatureParagraph({ text, icon: Icon, bgColor }: Props) {
       >
         <Icon size={20} weight="fill" color="#fff" />
       </div>
-      <p className="text-base text-base-text">{text}</p>
+      <p className="text-sm lg:text-base text-base-text">{text}</p>
     </div>
   )
 }

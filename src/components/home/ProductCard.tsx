@@ -2,9 +2,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { useDispatch } from 'react-redux'
 
-import { Tags } from './Tags'
-
-import { Minus, Plus, ShoppingCart } from 'phosphor-react'
+import { ShoppingCart } from 'phosphor-react'
 
 import { baloo700 } from '../../styles/fonts'
 import { addProductToCart } from '@/redux/cart/slice'
@@ -60,7 +58,7 @@ export function ProductCard({ product }: Props) {
   }
 
   return (
-    <div className="max-w-[24rem] bg-base-card flex flex-col justify-between px-3 py-4 rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] ">
+    <div className="max-w-[24rem] bg-base-card flex flex-col justify-between mt-4 px-3 pb-4 pt-2 md:pt-4 rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] ">
       <div className="flex flex-col items-center">
         <div className="relative w-full h-44 md:w-full md:h-44">
           <Image src={product.image} alt="Pão de Queijo" fill quality={100} />
@@ -71,7 +69,7 @@ export function ProductCard({ product }: Props) {
           })}
         </div> */}
         <h2
-          className={`${baloo700.className} text-center text-base-subtitle text-base lg:text-lg mt-4`}
+          className={`${baloo700.className} text-center text-base-subtitle text-base lg:text-lg mt-2 md:mt-4`}
         >
           {product.name}
         </h2>
@@ -80,7 +78,7 @@ export function ProductCard({ product }: Props) {
         </span>
       </div>
 
-      <div className="flex  flex-col px-1 justify-between items-center  gap-2 md:flex-row md:gap-4 md:mt-4">
+      <div className="flex  flex-col px-1 justify-between items-center gap-2 md:flex-row md:gap-4 md:mt-4">
         <div className="flex mt-2 md:mt-0 items-center gap-[2px]">
           <span className="text-sm">R$</span>
           <h3 className={`${baloo700.className} text-lg md:text-2xl`}>

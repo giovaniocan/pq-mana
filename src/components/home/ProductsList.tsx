@@ -5,7 +5,7 @@ import { Cards } from '@/utils/CardsContent'
 
 export function ProductsList() {
   return (
-    <div>
+    <div className="px-4 lg:px-0">
       <h2 className={`${baloo800.className} text-4xl text-base-subtitle`}>
         Nossos produtos
       </h2>

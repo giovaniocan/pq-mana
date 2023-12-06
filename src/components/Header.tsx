@@ -11,14 +11,16 @@ export function Header() {
   const numberOfPRoductsInCart = useSelector(selectNumberOfProductsInCart)
 
   return (
-    <main className="bg-red-600 w-full fixed md:relative flex flex-col justify-between items-center  md:flex-row  pt-4 md:py-9 ">
-      <Link href="/home" className="flex items-center gap-3 md:gap-6">
+    <main className="bg-background z-10 w-full fixed pl-4 lg:pl-0 pr-8 lg:pr-0 md:relative flex justify-between items-center pt-6 pb-2 border-b md:border-0 border-b-yellow  md:py-9 ">
+      <Link href="/" className="flex items-center gap-3 md:gap-6">
         <Image src={LogoImage} height={62} width={94} alt="" />
-        <span className={`${baloo700.className} text-2xl`}>Pão de queijo</span>
+        <span className={`${baloo700.className} text-lg md:text-2xl`}>
+          Pão de queijo
+        </span>
       </Link>
 
-      <div className="flex gap-12 md:gap-3 items-center mt-8 md:mt-0">
-        <div className="flex gap-1 items-center py-2 px-3 rounded-md bg-purple-light text-purple-dark">
+      <div className="flex gap-3 items-center ">
+        <div className="hidden md:flex gap-1 items-center py-2 px-3 rounded-md bg-purple-light text-purple-dark">
           <MapPin size={22} weight="fill" />
           <span className="text-sm">Moreira Sales, PR</span>
         </div>
