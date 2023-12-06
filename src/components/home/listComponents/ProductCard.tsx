@@ -4,10 +4,10 @@ import { useDispatch } from 'react-redux'
 
 import { ShoppingCart } from 'phosphor-react'
 
-import { baloo700 } from '../../styles/fonts'
+import { baloo700 } from '../../../styles/fonts'
 import { addProductToCart } from '@/redux/cart/slice'
-import { PlusAndMinusButton } from '../PlusAndMinutsButton'
-import { ToastyNotification } from '@/utils/ToastyMessage'
+import { PlusAndMinusButton } from '../../PlusAndMinutsButton'
+import { ToastyNotification } from '@/hooks/ToastyMessage'
 
 interface ProductProps {
   id: number

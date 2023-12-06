@@ -1,4 +1,4 @@
-import { baloo800 } from '../../styles/fonts'
+import { baloo800 } from '../../../styles/fonts'
 import { ProductCard } from './ProductCard'
 
 import { Cards } from '@/utils/CardsContent'

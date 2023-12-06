@@ -1,5 +1,5 @@
 import { useFormContext } from 'react-hook-form'
-import { ErrorMessage } from './form/ErrorsMessage'
+import { ErrorMessage } from './errors/ErrorsMessage'
 
 export function AddressForm() {
   const { register } = useFormContext()

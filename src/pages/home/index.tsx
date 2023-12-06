@@ -1,6 +1,6 @@
 import { Header } from '@/components/Header'
-import { Intro } from '@/components/home/Intro'
-import { ProductsList } from '@/components/home/ProductsList'
+import { Intro } from '@/components/home/introComponents/Intro'
+import { ProductsList } from '@/components/home/listComponents/ProductsList'
 
 import { NextSeo } from 'next-seo'
 

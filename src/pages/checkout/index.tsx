@@ -1,6 +1,6 @@
 import { Header } from '@/components/Header'
-import { FormAddress } from '@/components/checkout/FormAddress'
-import { SummaryBill } from '@/components/checkout/SummaryBill'
+import { FormAddress } from '@/components/checkout/adressFormComponents/FormAddress'
+import { SummaryBill } from '@/components/checkout/summaryComponentes/SummaryBill'
 
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -15,10 +15,10 @@ import { RootState } from '@/redux/rootReducer'
 import { ArrowUUpLeft } from 'phosphor-react'
 
 import Link from 'next/link'
-import { sendEmail } from '@/utils/SendEmailFunction'
+import { sendEmail } from '@/hooks/SendEmailFunction'
 import { EmptyCart } from '@/components/checkout/EmptyCart'
 import { CreateFormSchema } from '@/lib/FormSchema'
-import { ToastyNotification } from '@/utils/ToastyMessage'
+import { ToastyNotification } from '@/hooks/ToastyMessage'
 import { NextSeo } from 'next-seo'
 
 type CreateFormData = z.infer<typeof CreateFormSchema>

@@ -1,5 +1,5 @@
 import { CardCart } from './CardCart'
-import { baloo700 } from '../../styles/fonts'
+import { baloo700 } from '../../../styles/fonts'
 
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/rootReducer'

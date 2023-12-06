@@ -1,7 +1,7 @@
 import { MapPin } from 'phosphor-react'
-import { baloo700 } from '../../styles/fonts'
+import { baloo700 } from '../../../styles/fonts'
 import { AddressForm } from './AddressForm'
-import { PaymentMethod } from './PaymentMethod'
+import { PaymentMethod } from './paymentComponents/PaymentMethod'
 
 export function FormAddress() {
   return (

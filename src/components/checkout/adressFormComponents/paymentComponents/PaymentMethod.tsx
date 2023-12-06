@@ -1,7 +1,6 @@
 import { CurrencyDollarSimple, Bank, CreditCard, Money } from 'phosphor-react'
 import { PaymentOption } from './PaymentOptions'
-import { ErrorMessage } from './form/ErrorsMessage'
-import { ErrorPaymenthMethoidError } from './form/ErrorPaymenthMethoidError'
+import { ErrorPaymenthMethoidError } from '../errors/ErrorPaymenthMethoidError'
 
 import { useFormContext } from 'react-hook-form'
 
