@@ -7,7 +7,7 @@ import { ShoppingCart } from 'phosphor-react'
 import { baloo700 } from '../../styles/fonts'
 import { addProductToCart } from '@/redux/cart/slice'
 import { PlusAndMinusButton } from '../PlusAndMinutsButton'
-import { toast } from 'react-toastify'
+import { ToastyNotification } from '@/utils/ToastyMessage'
 
 interface ProductProps {
   id: number
@@ -28,21 +28,27 @@ export function ProductCard({ product }: Props) {
   const dispatch = useDispatch()
 
   function handleAddToCart() {
+    if (quantity <= 0) {
+      return alert('A quantidade não pode ser zero')
+    }
+
     try {
       dispatch(addProductToCart({ ...product, quantity }))
       setQuantity(0)
 
-      toast.success('Produto adicionado ao carrinho !', {
-        position: 'bottom-right',
-        autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'colored',
+      ToastyNotification({
+        message: 'Produto adicionado ao carrinho ! ',
+        type: 'success',
+        whereInTheScreen: 'bottom-right',
       })
-    } catch (error) {}
+    } catch (error) {
+      ToastyNotification({
+        message: 'Selecione a quantidade antes de adicionar ao carrinho',
+        type: 'error',
+        whereInTheScreen: 'top-right',
+      })
+      console.log(error)
+    }
   }
 
   function handleIncrease() {
@@ -91,12 +97,13 @@ export function ProductCard({ product }: Props) {
             handleIncrease={handleIncrease}
             quantity={quantity}
           />
-          <div
+          <button
+            disabled={quantity <= 0}
             onClick={handleAddToCart}
-            className="bg-purple-dark p-2 cursor-pointer rounded-lg"
+            className="bg-purple-dark p-2 cursor-pointer rounded-lg disabled:cursor-not-allowed"
           >
             <ShoppingCart size={25} weight="fill" color="#fff" />
-          </div>
+          </button>
         </div>
       </div>
     </div>
