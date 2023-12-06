@@ -16,7 +16,6 @@ import { ArrowUUpLeft } from 'phosphor-react'
 
 import Link from 'next/link'
 import { sendEmail } from '@/utils/SendEmailFunction'
-import { toast } from 'react-toastify'
 import { EmptyCart } from '@/components/checkout/EmptyCart'
 import { CreateFormSchema } from '@/lib/FormSchema'
 import { ToastyNotification } from '@/utils/ToastyMessage'
