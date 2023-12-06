@@ -29,7 +29,11 @@ export function ProductCard({ product }: Props) {
 
   function handleAddToCart() {
     if (quantity <= 0) {
-      return alert('A quantidade não pode ser zero')
+      return ToastyNotification({
+        message: 'Selecione a quantidade antes de adicionar ao carrinho',
+        type: 'error',
+        whereInTheScreen: 'top-right',
+      })
     }
 
     try {
@@ -42,11 +46,6 @@ export function ProductCard({ product }: Props) {
         whereInTheScreen: 'bottom-right',
       })
     } catch (error) {
-      ToastyNotification({
-        message: 'Selecione a quantidade antes de adicionar ao carrinho',
-        type: 'error',
-        whereInTheScreen: 'top-right',
-      })
       console.log(error)
     }
   }
@@ -98,7 +97,6 @@ export function ProductCard({ product }: Props) {
             quantity={quantity}
           />
           <button
-            disabled={quantity <= 0}
             onClick={handleAddToCart}
             className="bg-purple-dark p-2 cursor-pointer rounded-lg disabled:cursor-not-allowed"
           >

@@ -19,6 +19,7 @@ import { sendEmail } from '@/utils/SendEmailFunction'
 import { toast } from 'react-toastify'
 import { EmptyCart } from '@/components/checkout/EmptyCart'
 import { CreateFormSchema } from '@/lib/FormSchema'
+import { ToastyNotification } from '@/utils/ToastyMessage'
 
 type CreateFormData = z.infer<typeof CreateFormSchema>
 
@@ -71,15 +72,10 @@ export default function Checkout() {
       dispatch(cleanCart())
       reset()
     } catch (error) {
-      toast.error('Erro ao finalizar compra! Tente novamente mais tarde', {
-        position: 'top-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'colored',
+      ToastyNotification({
+        message: 'Erro ao finalizar compra! Tente novamente mais tarde',
+        type: 'error',
+        whereInTheScreen: 'top-right',
       })
     }
   }
