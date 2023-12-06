@@ -108,7 +108,7 @@ export default function Checkout() {
         <p className="text-xl font-medium">Voltar</p>
       </Link>
 
-      <main className="mt-6 ">
+      <main className=" mt-8 md:mt-6  ">
         <FormProvider {...createAdressForm}>
           <form
             id="form"

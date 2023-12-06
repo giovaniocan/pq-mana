@@ -11,7 +11,7 @@ export function Header() {
   const numberOfPRoductsInCart = useSelector(selectNumberOfProductsInCart)
 
   return (
-    <main className="flex flex-col md:flex-row justify-between items-center pt-4 md:py-9 ">
+    <main className="bg-red-600 w-full fixed md:relative flex flex-col justify-between items-center  md:flex-row  pt-4 md:py-9 ">
       <Link href="/home" className="flex items-center gap-3 md:gap-6">
         <Image src={LogoImage} height={62} width={94} alt="" />
         <span className={`${baloo700.className} text-2xl`}>Pão de queijo</span>

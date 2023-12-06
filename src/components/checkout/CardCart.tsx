@@ -9,6 +9,7 @@ import {
   increaseProductQuantity,
   removeProductFromCart,
 } from '@/redux/cart/slice'
+import { PlusAndMinusButton } from '../PlusAndMinutsButton'
 
 interface Product {
   id: number
@@ -52,15 +53,11 @@ export function CardCart({ product }: CardCartProps) {
         <div>
           <h4 className="text-base-subtitle text-base">{product.name}</h4>
           <div className="flex gap-2">
-            <div className="flex gap-2 bg-base-button items-center py-2 px-3 rounded-lg">
-              <button type="button" onClick={handleDecrease}>
-                <Minus color="#8047F8" size={22} />
-              </button>
-              <p className="text-base text-base-title">{quantity}</p>
-              <button type="button" onClick={handleIncrease}>
-                <Plus color="#8047F8" size={22} />
-              </button>
-            </div>
+            <PlusAndMinusButton
+              handleDecrease={handleDecrease}
+              handleIncrease={handleIncrease}
+              quantity={quantity}
+            />
             <button
               type="button"
               onClick={removeProduct}
