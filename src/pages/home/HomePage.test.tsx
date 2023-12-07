@@ -2,12 +2,15 @@ import { render, screen } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { store } from '@/redux/store'
 import Home from '@/pages/home'
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 
 describe('Home component', () => {
   it('Should render the Home Page and it is comonents', () => {
     render(
       <Provider store={store}>
-        <Home />
+        <MemoryRouterProvider>
+          <Home />
+        </MemoryRouterProvider>
       </Provider>,
     )
 
