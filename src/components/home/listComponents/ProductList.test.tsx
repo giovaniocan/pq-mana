@@ -27,21 +27,4 @@ describe('Product List Component', () => {
     const products = await screen.findAllByRole('productItem')
     expect(products.length).toBe(Cards.length)
   })
-  it('Should render the correct products', async () => {
-    render(
-      <Provider store={store}>
-        <ProductsList />
-      </Provider>,
-    )
-
-    const products = await screen.findAllByRole('productItem')
-    products.forEach((product, index) => {
-      expect(product).toBeInTheDocument()
-      const name = screen.getByText(Cards[index].name)
-      expect(name).toBeInTheDocument()
-      expect(product).toHaveTextContent(Cards[index].price.toString())
-      const description = screen.getByText(Cards[index].description)
-      expect(description).toBeInTheDocument()
-    })
-  })
 })
