@@ -26,6 +26,7 @@ export function Intro() {
           fill
           quality={100}
           className="rounded-lg"
+          role="img"
         />
       </div>
     </div>
