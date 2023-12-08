@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { Provider } from 'react-redux'
 import { store } from '@/redux/store'
 import Home from '@/pages/home'
-import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider/next-13'
 
 describe('Home component', () => {
   it('Should render the Home Page and it is comonents', () => {
