@@ -63,7 +63,11 @@ export function ProductCard({ product }: Props) {
     if (quantity > 0) {
       setQuantity((state) => state - 1)
     } else {
-      alert('A quantidade não pode ser negativa')
+      ToastyNotification({
+        message: 'A quantidade não pode ser negativa',
+        type: 'error',
+        whereInTheScreen: 'top-right',
+      })
     }
   }
 
