@@ -16,7 +16,9 @@ export function PlusAndMinusButton({
       <button role="subtract-button" type="button" onClick={handleDecrease}>
         <Minus color="#8047F8" size={22} />
       </button>
-      <p className="text-base text-base-title">{quantity}</p>
+      <p role="quantity-display" className="text-base text-base-title">
+        {quantity}
+      </p>
       <button role="add-button" type="button" onClick={handleIncrease}>
         <Plus color="#8047F8" size={22} />
       </button>
