@@ -13,11 +13,11 @@ export function PlusAndMinusButton({
 }: PlusAndMinusProps) {
   return (
     <div className="flex gap-2 bg-base-button items-center py-2 px-3 rounded-lg">
-      <button type="button" onClick={handleDecrease}>
+      <button role="subtract-button" type="button" onClick={handleDecrease}>
         <Minus color="#8047F8" size={22} />
       </button>
       <p className="text-base text-base-title">{quantity}</p>
-      <button type="button" onClick={handleIncrease}>
+      <button role="add-button" type="button" onClick={handleIncrease}>
         <Plus color="#8047F8" size={22} />
       </button>
     </div>

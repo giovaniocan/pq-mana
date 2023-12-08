@@ -105,6 +105,7 @@ export function ProductCard({ product }: Props) {
             quantity={quantity}
           />
           <button
+            role="add-to-cart"
             onClick={handleAddToCart}
             className="bg-purple-dark p-2 cursor-pointer rounded-lg disabled:cursor-not-allowed"
           >
