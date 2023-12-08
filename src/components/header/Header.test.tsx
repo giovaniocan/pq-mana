@@ -1,7 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { useSelector } from 'react-redux'
 import { Header } from './Header'
-import mockRouter from 'next-router-mock'
 
 jest.mock('next/router', () => jest.requireActual('next-router-mock'))
 
