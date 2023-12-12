@@ -1,4 +1,7 @@
-import cart, { addProductToCart } from '@/redux/cart/slice'
+import cart, {
+  addProductToCart,
+  removeProductFromCart,
+} from '@/redux/cart/slice'
 import { EnhancedStore, configureStore } from '@reduxjs/toolkit'
 import { RootState } from '@/redux/rootReducer'
 
@@ -62,5 +65,49 @@ describe('Reducer test', () => {
     Mockstore.dispatch(addProductToCart(product2)) // Adiciona o produto 2
     const stateAfterSecondProduct = Mockstore.getState()
     expect(stateAfterSecondProduct.cart.products.length).toBe(2)
+  })
+
+  it('Should not add the product with the quantity < 1', async () => {
+    const product = {
+      id: 1,
+      name: 'Pão de Queijo de Pote 1 Kg',
+      image: 'Pote1Kg',
+      tags: ['1 e 2Kg', 'delicioso'],
+      description: 'Sabor irresistível em 1kg. Praticidade única.',
+      price: 9.9,
+      quantity: 0,
+    }
+
+    try {
+      Mockstore.dispatch(addProductToCart(product))
+    } catch (error: any) {
+      expect(error.message).toBe('A quantidade não pode ser zero')
+    }
+
+    const state = Mockstore.getState()
+    expect(state.cart.products.length).toBe(0)
+  })
+
+  it('Should remove the product from cart', async () => {
+    const product = {
+      id: 1,
+      name: 'Pão de Queijo de Pote 1 Kg',
+      image: 'Pote1Kg',
+      tags: ['1 e 2Kg', 'delicioso'],
+      description: 'Sabor irresistível em 1kg. Praticidade única.',
+      price: 9.9,
+      quantity: 1,
+    }
+    const idProduct = product.id
+
+    Mockstore.dispatch(addProductToCart(product))
+
+    const stateBeforeRemoveProduct = Mockstore.getState()
+    expect(stateBeforeRemoveProduct.cart.products.length).toBe(1)
+
+    Mockstore.dispatch(removeProductFromCart(idProduct))
+
+    const stateAfterRemove = Mockstore.getState()
+    expect(stateAfterRemove.cart.products.length).toBe(0)
   })
 })
