@@ -17,7 +17,7 @@ export function SummaryBill() {
   const totalPriceInCart = useSelector(selectTotalPrice)
 
   return (
-    <div className="flex flex-col gap-4 w-full lg:w-2/5">
+    <div role="summary-bill" className="flex flex-col gap-4 w-full lg:w-2/5">
       <h1 className={`${baloo700.className} text-base-subtitle text-lg`}>
         Produtos Selecionados
       </h1>

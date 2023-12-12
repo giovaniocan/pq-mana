@@ -5,7 +5,7 @@ import { PaymentMethod } from './paymentComponents/PaymentMethod'
 
 export function FormAddress() {
   return (
-    <div className="w-full sm:w-3/5">
+    <div role="form-addres" className="w-full sm:w-3/5">
       <h1 className={`${baloo700.className} text-base-subtitle text-lg`}>
         Complete seu pedido
       </h1>

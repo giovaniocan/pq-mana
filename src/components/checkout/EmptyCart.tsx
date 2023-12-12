@@ -7,7 +7,10 @@ export function EmptyCart() {
   const router = useRouter()
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div
+      role="empty-cart"
+      className="flex flex-col items-center justify-center"
+    >
       <div className="mt-6 flex">
         <XCircle
           className="absolute ml-14 -mt-2"

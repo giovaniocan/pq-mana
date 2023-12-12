@@ -14,7 +14,6 @@ import { selectTotalPrice } from '@/redux/cart/cart.selector'
 import { RootState } from '@/redux/rootReducer'
 import { ArrowUUpLeft } from 'phosphor-react'
 
-import Link from 'next/link'
 import { sendEmail } from '@/hooks/SendEmailFunction'
 import { EmptyCart } from '@/components/checkout/EmptyCart'
 import { CreateFormSchema } from '@/lib/FormSchema'
@@ -80,6 +79,10 @@ export default function Checkout() {
     }
   }
 
+  function handleSendToHome() {
+    router.push('/home')
+  }
+
   return (
     <>
       <NextSeo
@@ -103,22 +106,21 @@ export default function Checkout() {
         }}
       />
       <div
-        className={`${
-          products.length > 0
-            ? `h-full bg-background`
-            : `h-screen bg-background`
+        className={`bg-background${
+          products.length > 0 ? `h-full` : `h-screen`
         }`}
       >
         <div className=" lg:px-36 flex flex-col ">
           <Header />
 
-          <Link
-            href="/"
-            className="hidden w-48 md:flex gap-2 mt-2 items-center p-2 rounded-md relative"
+          <button
+            role="send-home-button"
+            onClick={handleSendToHome}
+            className="hidden w-48 md:flex gap-2 mt-2 items-center p-2 rounded-md relative cursor-pointer"
           >
             <ArrowUUpLeft size={40} weight="fill" />
             <p className="text-xl font-medium">Voltar</p>
-          </Link>
+          </button>
 
           <main className="mt-32 mb-8 md:mt-6 px-4 md:px-0 ">
             {products.length > 0 ? (
