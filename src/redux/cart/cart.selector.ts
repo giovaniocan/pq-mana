@@ -3,7 +3,7 @@
 import { RootState } from '../rootReducer'
 import { createSelector } from '@reduxjs/toolkit'
 
-const cartSelector = (state: RootState) => state.cartReducer.products
+const cartSelector = (state: RootState) => state.cart.products
 
 export const selectNumberOfProductsInCart = createSelector(
   [cartSelector],

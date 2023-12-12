@@ -12,7 +12,7 @@ export function SummaryBill() {
     formState: { isSubmitting },
   } = useFormContext()
 
-  const { products } = useSelector((state: RootState) => state.cartReducer)
+  const { products } = useSelector((state: RootState) => state.cart)
 
   const totalPriceInCart = useSelector(selectTotalPrice)
 

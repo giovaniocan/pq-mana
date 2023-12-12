@@ -1,13 +1,30 @@
-import { store } from '@/redux/store'
+/* eslint-disable testing-library/no-unnecessary-act */
 import { Cards } from '@/utils/CardsContent'
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
-import { Provider } from 'react-redux'
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+
 import { ProductCard } from './ProductCard'
 
+import { Provider } from 'react-redux'
+
+import { EnhancedStore, configureStore } from '@reduxjs/toolkit'
+import { RootState } from '@/redux/rootReducer'
+
+import cart from '@/redux/cart/slice'
+
+import '@testing-library/jest-dom/extend-expect'
+
 describe('Product Card Component', () => {
+  let Mockstore: EnhancedStore<RootState>
+  beforeEach(() => {
+    Mockstore = configureStore({
+      reducer: {
+        cart,
+      },
+    })
+  })
   it('Should render the ProductCard component', () => {
     render(
-      <Provider store={store}>
+      <Provider store={Mockstore}>
         <ProductCard product={Cards[0]} />
       </Provider>,
     )
@@ -17,9 +34,8 @@ describe('Product Card Component', () => {
   })
 
   it('Should render the correct product data', () => {
-    // NAO TERMINEI AQUI
     render(
-      <Provider store={store}>
+      <Provider store={Mockstore}>
         <ProductCard product={Cards[0]} />
       </Provider>,
     )
@@ -36,16 +52,16 @@ describe('Product Card Component', () => {
 
   it('should incremets and decrements de selected quantity', async () => {
     render(
-      <Provider store={store}>
+      <Provider store={Mockstore}>
         <ProductCard product={Cards[0]} />
       </Provider>,
     )
 
-    const addButton = screen.getByRole('add-button')
+    const incrementButton = screen.getByRole('increment-button')
     const subtractButton = screen.getByRole('subtract-button')
     const counter = screen.getByText('0')
 
-    fireEvent.click(addButton)
+    fireEvent.click(incrementButton)
 
     await waitFor(() => {
       expect(counter).toHaveTextContent('1')
@@ -60,7 +76,7 @@ describe('Product Card Component', () => {
 
   it('Should not allow the quantity to be negative', async () => {
     render(
-      <Provider store={store}>
+      <Provider store={Mockstore}>
         <ProductCard product={Cards[0]} />
       </Provider>,
     )
@@ -74,5 +90,70 @@ describe('Product Card Component', () => {
     await waitFor(() => {
       expect(quantity).toHaveTextContent('0')
     })
+  })
+
+  it('Should add the product in cart when click in the right button', async () => {
+    render(
+      <Provider store={Mockstore}>
+        <ProductCard product={Cards[0]} />
+      </Provider>,
+    )
+
+    // Simular o clique no botão de incremento
+    const incrementButton = screen.getByRole('increment-button')
+    fireEvent.click(incrementButton)
+
+    // Obter o número de itens no carrinho antes do clique no botão "add-to-cart"
+    const initialCartCount = Mockstore.getState().cart.products.length
+
+    // Simular o clique no botão "add-to-cart"
+    const button = screen.getByRole('add-to-cart')
+    await act(async () => {
+      fireEvent.click(button)
+    })
+
+    // Verificar se o número de itens no carrinho aumentou
+    const finalCartCount = Mockstore.getState().cart.products.length
+    expect(finalCartCount).toBeGreaterThan(initialCartCount)
+  })
+
+  it('Should not add the product when the quantity it is smaller than 1', async () => {
+    render(
+      <Provider store={Mockstore}>
+        <ProductCard product={Cards[0]} />
+      </Provider>,
+    )
+    const initialCartCount = Mockstore.getState().cart.products.length
+
+    const button = screen.getByRole('add-to-cart')
+    await act(async () => {
+      fireEvent.click(button)
+    })
+
+    const finalCartCount = Mockstore.getState().cart.products.length
+    expect(finalCartCount).toEqual(initialCartCount)
+  })
+
+  it('Should reset the quantity when click in the button', async () => {
+    render(
+      <Provider store={Mockstore}>
+        <ProductCard product={Cards[0]} />
+      </Provider>,
+    )
+
+    const counter = screen.getByText('0')
+    // Simular o clique no botão de incremento
+    const incrementButton = screen.getByRole('increment-button')
+    fireEvent.click(incrementButton)
+
+    expect(counter).toHaveTextContent('1')
+
+    // Simular o clique no botão "add-to-cart"
+    const button = screen.getByRole('add-to-cart')
+    await act(async () => {
+      fireEvent.click(button)
+    })
+
+    expect(counter).toHaveTextContent('0')
   })
 })

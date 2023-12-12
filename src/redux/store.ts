@@ -22,3 +22,4 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: customizedMidleware, // para nao quebrar
 })
+export type AppStore = ReturnType<typeof store.getState>

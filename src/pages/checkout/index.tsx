@@ -27,7 +27,7 @@ export default function Checkout() {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  const { products } = useSelector((state: RootState) => state.cartReducer)
+  const { products } = useSelector((state: RootState) => state.cart)
 
   const filteredArray = products.map((product) => ({
     produto: product.name,

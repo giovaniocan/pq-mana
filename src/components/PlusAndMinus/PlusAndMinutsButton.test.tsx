@@ -15,10 +15,10 @@ describe('Plus And Minus button Component', () => {
       />,
     )
 
-    const addButton = screen.getByRole('add-button')
+    const incrementButton = screen.getByRole('increment-button')
     const subtractButton = screen.getByRole('subtract-button')
 
-    fireEvent.click(addButton)
+    fireEvent.click(incrementButton)
     expect(increaseFunction).toHaveBeenCalled()
 
     fireEvent.click(subtractButton)

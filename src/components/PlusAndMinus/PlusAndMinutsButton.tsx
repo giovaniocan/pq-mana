@@ -19,7 +19,7 @@ export function PlusAndMinusButton({
       <p role="quantity-display" className="text-base text-base-title">
         {quantity}
       </p>
-      <button role="add-button" type="button" onClick={handleIncrease}>
+      <button role="increment-button" type="button" onClick={handleIncrease}>
         <Plus color="#8047F8" size={22} />
       </button>
     </div>

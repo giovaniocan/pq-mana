@@ -37,7 +37,7 @@ export function ProductCard({ product }: Props) {
     }
 
     try {
-      await dispatch(addProductToCart({ ...product, quantity }))
+      dispatch(addProductToCart({ ...product, quantity }))
       setQuantity(0)
 
       ToastyNotification({
