@@ -1,5 +1,6 @@
 import cart, {
   addProductToCart,
+  increaseProductQuantity,
   removeProductFromCart,
 } from '@/redux/cart/slice'
 import { EnhancedStore, configureStore } from '@reduxjs/toolkit'
@@ -109,5 +110,25 @@ describe('Reducer test', () => {
 
     const stateAfterRemove = Mockstore.getState()
     expect(stateAfterRemove.cart.products.length).toBe(0)
+  })
+
+  it('Should increase product quantity', async () => {
+    const product = {
+      id: 1,
+      name: 'Pão de Queijo de Pote 1 Kg',
+      image: 'Pote1Kg',
+      tags: ['1 e 2Kg', 'delicioso'],
+      description: 'Sabor irresistível em 1kg. Praticidade única.',
+      price: 9.9,
+      quantity: 1,
+    }
+    const idProduct = product.id
+
+    Mockstore.dispatch(addProductToCart(product))
+
+    Mockstore.dispatch(increaseProductQuantity(idProduct))
+
+    const state = Mockstore.getState()
+    expect(state.cart.products[0].quantity).toBe(2)
   })
 })
