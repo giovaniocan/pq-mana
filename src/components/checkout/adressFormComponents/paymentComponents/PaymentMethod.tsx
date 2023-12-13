@@ -25,16 +25,19 @@ export function PaymentMethod() {
           id="cartão de crédito"
           label="Cartão de Crédito"
           icon={<CreditCard size={20} color="#8047F8" />}
+          role="credit-card"
         />
         <PaymentOption
           id="pix"
           label="PIX"
           icon={<Bank size={20} color="#8047F8" />}
+          role="pix"
         />
         <PaymentOption
           id="dinheiro"
           label="Dinheiro"
           icon={<Money size={20} color="#8047F8" />}
+          role="money"
         />
       </div>
       {errors.paymentMethod && <ErrorPaymenthMethoidError />}

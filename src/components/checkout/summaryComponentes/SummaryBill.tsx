@@ -32,6 +32,7 @@ export function SummaryBill() {
               <p>R$ {totalPriceInCart}</p>
             </div>
             <button
+              role="confirm-bill"
               disabled={isSubmitting}
               type="submit"
               form="form"
