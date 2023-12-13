@@ -1,8 +1,6 @@
 import { Header } from '@/components/header/Header'
-import { FormAddress } from '@/components/checkout/adressFormComponents/FormAddress'
-import { SummaryBill } from '@/components/checkout/summaryComponentes/SummaryBill'
 
-import { useForm, FormProvider } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { z } from 'zod'
@@ -15,12 +13,12 @@ import { RootState } from '@/redux/rootReducer'
 import { ArrowUUpLeft } from 'phosphor-react'
 
 import { sendEmail } from '@/hooks/SendEmailFunction'
-import { EmptyCart } from '@/components/checkout/EmptyCart'
 import { CreateFormSchema } from '@/lib/FormSchema'
 import { ToastyNotification } from '@/hooks/ToastyMessage'
 import { NextSeo } from 'next-seo'
+import { FormComponent } from '@/components/checkout'
 
-type CreateFormData = z.infer<typeof CreateFormSchema>
+export type CreateFormData = z.infer<typeof CreateFormSchema>
 
 export default function Checkout() {
   const dispatch = useDispatch()
@@ -45,7 +43,7 @@ export default function Checkout() {
     resolver: zodResolver(CreateFormSchema),
   })
 
-  const { handleSubmit, reset } = createAdressForm
+  const { reset } = createAdressForm
 
   async function handleSubmitForm(data: CreateFormData) {
     const templateParams = {
@@ -105,11 +103,7 @@ export default function Checkout() {
           ],
         }}
       />
-      <div
-        className={`bg-background${
-          products.length > 0 ? `h-full` : `h-screen`
-        }`}
-      >
+      <div className="bg-background h-screen">
         <div className=" lg:px-36 flex flex-col ">
           <Header />
 
@@ -122,22 +116,10 @@ export default function Checkout() {
             <p className="text-xl font-medium">Voltar</p>
           </button>
 
-          <main className="mt-32 mb-8 md:mt-6 px-4 md:px-0 ">
-            {products.length > 0 ? (
-              <FormProvider {...createAdressForm}>
-                <form
-                  id="form"
-                  onSubmit={handleSubmit(handleSubmitForm)}
-                  className="flex  flex-col md:flex-row gap-8"
-                >
-                  <FormAddress />
-                  <SummaryBill />
-                </form>
-              </FormProvider>
-            ) : (
-              <EmptyCart />
-            )}
-          </main>
+          <FormComponent
+            handleFormSubmit={handleSubmitForm}
+            isThereAnyProduct={products.length > 0}
+          />
         </div>
       </div>
     </>

@@ -47,7 +47,7 @@ describe('Checkout Component', () => {
     )
 
     const emptyCartComponent = screen.getByRole('empty-cart')
-    expect(emptyCartComponent).toBeInTheDocument()
+    expect(emptyCartComponent).toBeVisible()
   })
 
   it('Shoul show the FormAddess and Summary Bill component when there are some products there', async () => {
