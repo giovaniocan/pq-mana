@@ -62,6 +62,7 @@ export function CardCart({ product }: CardCartProps) {
               quantity={quantity}
             />
             <button
+              role="remove-button"
               type="button"
               onClick={removeProduct}
               className="bg-base-button items-center rounded-lg flex gap-[0.25rem]  py-2 px-3"
@@ -71,7 +72,10 @@ export function CardCart({ product }: CardCartProps) {
             </button>
           </div>
         </div>
-        <h3 className="text-base-text mb-1 lg:mb-0 font-bold text-base">
+        <h3
+          role="total-price-of-the-product"
+          className="text-base-text mb-1 lg:mb-0 font-bold text-base"
+        >
           R$ {totalPrice.toFixed(2)}
         </h3>
       </div>
