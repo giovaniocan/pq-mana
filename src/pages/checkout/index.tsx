@@ -59,7 +59,7 @@ export default function Checkout() {
     }
 
     try {
-      /*  sendEmail(templateParams) */
+      sendEmail(templateParams)
 
       await router.push({
         pathname: '/success',
