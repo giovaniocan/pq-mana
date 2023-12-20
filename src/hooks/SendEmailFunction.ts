@@ -20,8 +20,6 @@ export const sendEmail = async (templateParams: EmailParams): Promise<void> => {
       templateParams,
       'FowWGjN7_YdysqRfB',
     )
-
-    console.log('Email sent successfully:', response.status, response.text)
   } catch (error) {
     console.error('Failed to send email:', error)
     throw new Error('Erro ao enviar o e-mail.') // Lança um erro em caso de falha

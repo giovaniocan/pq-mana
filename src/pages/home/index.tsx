@@ -55,7 +55,6 @@ export default function Home(/* { products }: HomeProps */) {
   const res = await api.get('/products')
   const products = res.data
 
-  console.log(products)
 
   return {
     props: {

@@ -106,7 +106,6 @@ describe('Card Cart Componente', () => {
     render(<RenderComponent />)
 
     const price = screen.getByRole('total-price-of-the-product')
-    console.log(price)
     expect(price).toHaveTextContent(
       (product1.quantity * product1.price).toString(),
     )
