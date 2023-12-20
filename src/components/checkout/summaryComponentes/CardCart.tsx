@@ -11,7 +11,7 @@ import {
 } from '@/redux/cart/slice'
 import { PlusAndMinusButton } from '../../PlusAndMinus/PlusAndMinutsButton'
 
-interface Product {
+export interface Product {
   id: number
   name: string
   image: string
@@ -45,9 +45,12 @@ export function CardCart({ product }: CardCartProps) {
 
   const totalPrice = product.price * quantity
   return (
-    <div className="flex gap-5 mt-5 lg:flex-row items-center pb-6 border-b border-base-button">
+    <div
+      data-testid="card-cart"
+      className="flex gap-5 mt-5 lg:flex-row items-center pb-6 border-b border-base-button"
+    >
       <div className="relative w-20 h-20">
-        <Image src={product.image} alt="Pão de Queijo" fill quality={100} />
+        <Image src={product.image} alt={product.name} fill quality={100} />
       </div>
       <div className="flex flex-col-reverse lg:flex-row w-full lg:items-center justify-between">
         <div>

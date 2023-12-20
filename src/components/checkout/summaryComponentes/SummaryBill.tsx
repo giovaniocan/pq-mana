@@ -29,7 +29,7 @@ export function SummaryBill() {
           <div className="flex flex-col gap-6 mt-5">
             <div className="flex items-center justify-between text-xl text-base-subtitleh font-bold">
               <p>Total</p>
-              <p>R$ {totalPriceInCart}</p>
+              <p role="total-price">R$ {totalPriceInCart}</p>
             </div>
             <button
               role="confirm-bill"

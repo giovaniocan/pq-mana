@@ -7,6 +7,25 @@ import cart, {
 import { EnhancedStore, configureStore } from '@reduxjs/toolkit'
 import { RootState } from '@/redux/rootReducer'
 
+const product = {
+  id: 1,
+  name: 'Pão de Queijo de Pote 1 Kg',
+  image: 'Pote1Kg',
+  tags: ['1 e 2Kg', 'delicioso'],
+  description: 'Sabor irresistível em 1kg. Praticidade única.',
+  price: 9.9,
+  quantity: 1,
+}
+const product2 = {
+  id: 2,
+  name: 'Pão de Queijo de Pote 4 Kg',
+  image: 'Pote4Kg',
+  tags: ['1 e 2Kg', 'delicioso'],
+  description: 'Sabor irresistível em 4kg. Praticidade única.',
+  price: 10.9,
+  quantity: 1,
+}
+
 describe('Reducer test', () => {
   let Mockstore: EnhancedStore<RootState>
   beforeEach(() => {
@@ -18,16 +37,6 @@ describe('Reducer test', () => {
   })
 
   it('Should add the corret product to the cart', async () => {
-    const product = {
-      id: 1,
-      name: 'Pão de Queijo de Pote 1 Kg',
-      image: 'Pote1Kg',
-      tags: ['1 e 2Kg', 'delicioso'],
-      description: 'Sabor irresistível em 1kg. Praticidade única.',
-      price: 9.9,
-      quantity: 1,
-    }
-
     Mockstore.dispatch(addProductToCart(product))
 
     const state = Mockstore.getState()
@@ -37,25 +46,6 @@ describe('Reducer test', () => {
   })
 
   it('Should not add the same product twice', async () => {
-    const product = {
-      id: 1,
-      name: 'Pão de Queijo de Pote 1 Kg',
-      image: 'Pote1Kg',
-      tags: ['1 e 2Kg', 'delicioso'],
-      description: 'Sabor irresistível em 1kg. Praticidade única.',
-      price: 9.9,
-      quantity: 1,
-    }
-    const product2 = {
-      id: 2,
-      name: 'Pão de Queijo de Pote 4 Kg',
-      image: 'Pote4Kg',
-      tags: ['1 e 2Kg', 'delicioso'],
-      description: 'Sabor irresistível em 4kg. Praticidade única.',
-      price: 10.9,
-      quantity: 1,
-    }
-
     Mockstore.dispatch(addProductToCart(product))
 
     Mockstore.dispatch(addProductToCart(product2)) // Adiciona o produto 2
@@ -64,16 +54,6 @@ describe('Reducer test', () => {
   })
 
   it('Should increment the quantity when add the same product', async () => {
-    const product = {
-      id: 1,
-      name: 'Pão de Queijo de Pote 1 Kg',
-      image: 'Pote1Kg',
-      tags: ['1 e 2Kg', 'delicioso'],
-      description: 'Sabor irresistível em 1kg. Praticidade única.',
-      price: 9.9,
-      quantity: 1,
-    }
-
     Mockstore.dispatch(addProductToCart(product))
     Mockstore.dispatch(addProductToCart(product))
 
@@ -84,7 +64,7 @@ describe('Reducer test', () => {
   })
 
   it('Should not add the product with the quantity < 1', async () => {
-    const product = {
+    const productWith0 = {
       id: 1,
       name: 'Pão de Queijo de Pote 1 Kg',
       image: 'Pote1Kg',
@@ -93,9 +73,8 @@ describe('Reducer test', () => {
       price: 9.9,
       quantity: 0,
     }
-
     try {
-      Mockstore.dispatch(addProductToCart(product))
+      Mockstore.dispatch(addProductToCart(productWith0))
     } catch (error: any) {
       expect(error.message).toBe('A quantidade não pode ser zero')
     }
@@ -105,15 +84,6 @@ describe('Reducer test', () => {
   })
 
   it('Should remove the product from cart', async () => {
-    const product = {
-      id: 1,
-      name: 'Pão de Queijo de Pote 1 Kg',
-      image: 'Pote1Kg',
-      tags: ['1 e 2Kg', 'delicioso'],
-      description: 'Sabor irresistível em 1kg. Praticidade única.',
-      price: 9.9,
-      quantity: 1,
-    }
     const idProduct = product.id
 
     Mockstore.dispatch(addProductToCart(product))
@@ -128,15 +98,6 @@ describe('Reducer test', () => {
   })
 
   it('Should increase product quantity', async () => {
-    const product = {
-      id: 1,
-      name: 'Pão de Queijo de Pote 1 Kg',
-      image: 'Pote1Kg',
-      tags: ['1 e 2Kg', 'delicioso'],
-      description: 'Sabor irresistível em 1kg. Praticidade única.',
-      price: 9.9,
-      quantity: 1,
-    }
     const idProduct = product.id
 
     Mockstore.dispatch(addProductToCart(product))
@@ -148,7 +109,7 @@ describe('Reducer test', () => {
   })
 
   it('Should decrease product quantity', async () => {
-    const product = {
+    const productWith2 = {
       id: 1,
       name: 'Pão de Queijo de Pote 1 Kg',
       image: 'Pote1Kg',
@@ -159,7 +120,7 @@ describe('Reducer test', () => {
     }
     const idProduct = product.id
 
-    Mockstore.dispatch(addProductToCart(product))
+    Mockstore.dispatch(addProductToCart(productWith2))
 
     Mockstore.dispatch(decreaseProductQuantity(idProduct))
 
@@ -168,15 +129,6 @@ describe('Reducer test', () => {
   })
 
   it('Should remove product from cart when quantity turn out 0', async () => {
-    const product = {
-      id: 1,
-      name: 'Pão de Queijo de Pote 1 Kg',
-      image: 'Pote1Kg',
-      tags: ['1 e 2Kg', 'delicioso'],
-      description: 'Sabor irresistível em 1kg. Praticidade única.',
-      price: 9.9,
-      quantity: 1,
-    }
     const idProduct = product.id
 
     Mockstore.dispatch(addProductToCart(product))
