@@ -8,6 +8,7 @@ import { baloo700 } from '../../../styles/fonts'
 import { addProductToCart } from '@/redux/cart/slice'
 import { PlusAndMinusButton } from '../../PlusAndMinus/PlusAndMinutsButton'
 import { ToastyNotification } from '@/hooks/ToastyMessage'
+import { Tags } from './Tags'
 
 interface ProductProps {
   id: number
@@ -80,11 +81,11 @@ export function ProductCard({ product }: Props) {
         <div className="relative w-full h-40 md:w-full md:h-44">
           <Image src={product.image} alt="Pão de Queijo" fill quality={100} />
         </div>
-        {/*  <div className="hidden items-center mt-3 md:flex w-full flex-wrap justify-around">
+        <div className="hidden items-center mt-3 md:flex w-full flex-wrap justify-around">
           {product.tags.map((tag) => {
             return <Tags key={tag}>{tag}</Tags>
           })}
-        </div> */}
+        </div>
         <h2
           className={`${baloo700.className} text-center text-base-subtitle text-base lg:text-lg mt-1 md:mt-4`}
         >

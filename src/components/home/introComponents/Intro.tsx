@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { baloo800 } from '../../../styles/fonts'
-import Photo from '../../../../public/intro-picture.jpg'
+import Photo from '../../../../public/capa.svg'
 import { IntroParagraphs } from './IntroPraphes'
 
 export function Intro() {
