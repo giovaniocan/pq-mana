@@ -3,7 +3,7 @@ import balde4Kg from '../../public/products/balde4Kg.svg'
 import pqCongelado50 from '../../public/products/congelado50.jpeg'
 import pqCongelado25 from '../../public/products/congelado25.jpeg'
 import pqCongelado85 from '../../public/products/congelado85.jpeg'
-import chipaPalitoTradicional from '../../public/products/chipaPalitoTradicional.svg'
+import chipaPalitoTradicional from '../../public/products/chipaPalitoTradicional.jpeg'
 import chipaTradicional from '../../public/products/chipaTradicional.jpeg'
 
 export const Cards = [
