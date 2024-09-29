@@ -78,8 +78,14 @@ export function ProductCard({ product }: Props) {
       className="max-w-[24rem] bg-base-card flex flex-col justify-between mt-4 px-3 pb-4 pt-1 md:pt-4 rounded-tl-md rounded-tr-[36px] rounded-br-md rounded-bl-[36px] "
     >
       <div className="flex flex-col items-center">
-        <div className="relative w-full h-40 md:w-full md:h-44">
-          <Image src={product.image} alt="Pão de Queijo" fill quality={100} />
+        <div className="relative w-full h-40 md:w-full rounded-3xl md:h-44">
+          <Image
+            src={product.image}
+            alt="Pão de Queijo"
+            className="rounded-lg"
+            fill
+            quality={100}
+          />
         </div>
         <div className="hidden items-center mt-3 md:flex w-full flex-wrap justify-around">
           {product.tags.map((tag) => {

@@ -19,7 +19,7 @@ export function Intro() {
         </div>
       </main>
 
-      <div className="relative w-64 h-52 md:w-[30rem] md:h-64 lg:w-[45rem] lg:h-[20rem] xl:w-[60rem] xl:h-[28rem]">
+      <div className="relative w-64  h-52 md:w-[30rem] md:h-64 lg:w-[45rem] lg:h-[20rem] xl:w-[60rem] xl:h-[28rem]">
         <Image
           src={Photo}
           alt="Pão de Queijo"
