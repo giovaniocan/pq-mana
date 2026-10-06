@@ -1,40 +1,88 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Maná Pão de Queijo
 
-## Getting Started
+**English** · [Português](README.pt-BR.md)
 
-First, run the development server:
+> Ordering website for Maná, a pão de queijo (Brazilian cheese bread) maker in Moreira Sales, Paraná: customers pick products, build a cart and send the order, which arrives by email and is paid on delivery.
+
+![Home page with the hero banner, four selling points and the start of the product list](docs/screenshots/home.png)
+
+## About
+
+The site takes orders without a backend or online payment. The catalog lives in the code, the cart lives in the browser, and checkout emails the order to the business through [EmailJS](https://www.emailjs.com/). The team then contacts the customer to confirm, and the customer pays on delivery. The interface is in Portuguese.
+
+It is a Next.js (Pages Router) app with Redux Toolkit for the cart, React Hook Form with Zod for the checkout form, and Jest with React Testing Library for tests.
+
+## Features
+
+- **Product catalog**: seven products (1 kg tubs, 4 kg buckets, frozen pão de queijo in three sizes and two kinds of chipa), each with a photo, size tags, a description and a quantity picker.
+- **Shopping cart**: adding a product that is already in the cart adds to its quantity. You can change quantities or remove items at checkout, and the header badge shows how many different products are in the cart.
+- **Cart survives reloads**: the cart is persisted to `localStorage` with `redux-persist`.
+- **Validated checkout form**: company or owner name, phone, address, city, CEP (Brazilian postal code, 8 digits) and number, all checked with a Zod schema before the order goes out.
+- **Payment on delivery**: the customer chooses credit card, PIX or cash. Nothing is charged online.
+- **Order by email**: on submit, the order goes out through EmailJS with the customer's details, every item with its quantity, and the total.
+- **Confirmation page**: shows the delivery name, city and payment method, and tells the customer the team will get in touch to confirm.
+- **Feedback and empty states**: toast messages for added items and errors, and an empty-cart screen with a way back to the products.
+
+## Screenshots
+
+| Product list | Checkout |
+| --- | --- |
+| ![Grid of product cards with photo, size tag, price and quantity buttons](docs/screenshots/products.png) | ![Checkout with the delivery address form, payment options and two products in the cart](docs/screenshots/checkout.png) |
+
+![Order confirmation showing delivery to Padaria Exemplo in Moreira Sales, PR, paid with PIX on delivery](docs/screenshots/success.png)
+
+All product prices are currently set to `0` in `src/utils/CardsContent.ts`, so the screens show R$ 0.00. The order in the confirmation screenshot uses made-up test data.
+
+## Tech stack
+
+- **Frontend:** Next.js 13 (Pages Router), React 18, TypeScript 5, Tailwind CSS 3
+- **State:** Redux Toolkit, redux-persist
+- **Forms:** React Hook Form, Zod
+- **Other libraries:** EmailJS (order email), react-toastify (toasts), next-seo (meta tags), Phosphor icons
+- **Testing:** Jest 29, React Testing Library
+- **Linting:** ESLint with `@rocketseat/eslint-config`
+
+## Getting started
+
+### Prerequisites
+
+- Node.js and npm (tested with Node.js 24)
+
+### Installation
 
 ```bash
+git clone https://github.com/giovaniocan/pq-mana.git
+cd pq-mana
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+For a production build, run `npm run build` and then `npm run start`.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Orders are sent with EmailJS. To receive them yourself, create your own EmailJS service and template and set them in `src/hooks/SendEmailFunction.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+The repo also has a `db.json` and an `npm run server` script that serve the products with `json-server` on port 3001. They were meant for a planned API; the code that would read from it is commented out in `src/pages/home/index.tsx`, so the pages don't use them.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Running tests
 
-## Learn More
+```bash
+npm test
+```
 
-To learn more about Next.js, take a look at the following resources:
+43 tests in 12 suites, using Jest and React Testing Library. They cover the components, the cart reducer, and the home, checkout and confirmation pages.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+src/
+├── pages/         # routes: / (home), /checkout, /success
+├── components/    # header, home (intro + product list), checkout, success
+├── redux/         # store, persisted cart slice and selectors
+├── lib/           # Zod schema for the checkout form
+├── hooks/         # EmailJS sender and toast helper
+├── utils/         # product catalog
+└── pages-tests/   # page-level tests
+public/            # logo, banner and product photos
+```
